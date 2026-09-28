@@ -20,6 +20,7 @@ She is running social and web for a college radio station while interning on bot
 - WMSC 90.3FM: social and web director.
 - Better Noise Music: digital marketing intern.
 - Big Picture Media: PR intern.
+- Live Nation Philadelphia / The Fillmore: guest services.
 - Junior at Montclair State, Social Media & PR and Film & Television.
 
 ## Capabilities and Constraints
@@ -35,12 +36,11 @@ She is running social and web for a college radio station while interning on bot
 - Binding visual direction lives in the design spec PDF (`~/Downloads/Ash Schnoor Portfolio — Design Spec Sheet.pdf`): references are the Pink and Beige Modern Creative Portfolio (Canva) and Sejal Dadlani's Creative Strategist Portfolio (Behance). The earlier black-and-pink editorial direction and the pastel SaaS direction are retired.
 
 ## Evidence on Hand
-As of 2026-09-27, none of these are supplied, and none may be fabricated:
-- cut-out portrait (transparent PNG)
-- full-resolution feed and post screenshots for each of the three roles
-- logos for WMSC, Better Noise Music, Big Picture Media (Ash offered to provide them)
-- the personal sticker or illustration that rests on the hero name
-
+As of 2026-09-27:
+- Logos for all four organizations: `images/` (recolored for the dark band; originals kept as `*-original.*`).
+- Hero sticker: `images/cat.svg`, drawn at Ash's request.
+- WMSC: 9 reels from gondola.cc/underscoreashie in `images/wmsc/`, plus profile totals (149,517 views, 18,835 likes, 22 posts).
+- Still missing, not to be fabricated: cut-out portrait; work samples for Better Noise Music, Big Picture Media, Live Nation.
 
 ## Product Principles
 - The work is the star; show it large.

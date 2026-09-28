@@ -1,0 +1,324 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-27T00:00:00Z",
+  "title": "Design System: Ash Schnoor",
+  "extensions": {
+    "colorMeta": {
+      "night": {
+        "role": "neutral",
+        "displayName": "Night",
+        "canonical": "oklch(15.7% 0.012 319)",
+        "tonalRamp": [
+          "#0D0A0E",
+          "#272228",
+          "#433E44",
+          "#615B62",
+          "#817B82",
+          "#A29CA3",
+          "#C8C2C9",
+          "#F2ECF4"
+        ]
+      },
+      "night-lifted": {
+        "role": "neutral",
+        "displayName": "Night Lifted",
+        "canonical": "oklch(19.8% 0.015 337)",
+        "tonalRamp": [
+          "#0F090D",
+          "#292127",
+          "#453D43",
+          "#635B61",
+          "#837A80",
+          "#A59BA2",
+          "#CBC1C8",
+          "#F5EBF2"
+        ]
+      },
+      "cream": {
+        "role": "neutral",
+        "displayName": "Cream",
+        "canonical": "oklch(95.4% 0.011 54)",
+        "tonalRamp": [
+          "#0F0A07",
+          "#28231F",
+          "#453E3A",
+          "#635C58",
+          "#837C77",
+          "#A49D98",
+          "#CAC2BE",
+          "#F5EDE8"
+        ]
+      },
+      "soft-mauve": {
+        "role": "neutral",
+        "displayName": "Soft Mauve",
+        "canonical": "oklch(75.9% 0.016 346)",
+        "tonalRamp": [
+          "#10080D",
+          "#2A2126",
+          "#463C42",
+          "#655A5F",
+          "#857A7F",
+          "#A69BA0",
+          "#CCC0C6",
+          "#F7EAF1"
+        ]
+      },
+      "hot-pink": {
+        "role": "primary",
+        "displayName": "Hot Pink",
+        "canonical": "oklch(67.1% 0.205 346)",
+        "tonalRamp": [
+          "#1C0010",
+          "#45002E",
+          "#730150",
+          "#A50374",
+          "#CC3796",
+          "#F35EB8",
+          "#FFA2D5",
+          "#FEE7F2"
+        ]
+      },
+      "on-pink": {
+        "role": "neutral",
+        "displayName": "On Pink",
+        "canonical": "oklch(15.7% 0.012 319)",
+        "tonalRamp": [
+          "#0D0A0E",
+          "#272228",
+          "#433E44",
+          "#615B62",
+          "#817B82",
+          "#A29CA3",
+          "#C8C2C9",
+          "#F2ECF4"
+        ],
+        "note": "Same value as night; kept as a separate role token for text and glyphs on pink."
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Hero name only, stacked on two lines."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section titles, case names, closing title; pink on dark or On Pink on pink."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Staggered skills list in cream."
+      },
+      "lede": {
+        "displayName": "Lede",
+        "purpose": "The one-line hero statement."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Default running text."
+      },
+      "body-large": {
+        "displayName": "Body Large",
+        "purpose": "Intro paragraphs, 38-40ch."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Uppercase roles, group names, view badges, social pills."
+      },
+      "marquee": {
+        "displayName": "Marquee",
+        "purpose": "Uppercase words in the pink marquee bands."
+      },
+      "script": {
+        "displayName": "Script",
+        "purpose": "Two or three tilted words paired with a sparkle."
+      }
+    },
+    "shadows": [
+      {
+        "name": "phone-lift",
+        "value": "0 1.5rem 3rem -1rem rgb(0 0 0 / 0.7), 0 0.3rem 0.8rem rgb(0 0 0 / 0.5)",
+        "purpose": "Phone mockup only, with a 1px cream outline at 14% opacity."
+      },
+      {
+        "name": "sticker-drop",
+        "value": "drop-shadow(0 0.25rem 0.35rem rgb(16 16 16 / 0.22))",
+        "purpose": "Felt star resting on the phone (CSS filter)."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Single easing for every transition and one-shot animation."
+      },
+      {
+        "name": "marquee-drift",
+        "value": "translateX(-50%) linear infinite, 38s (30s reversed on the second band)",
+        "purpose": "The only ambient motion; stops under reduced motion."
+      },
+      {
+        "name": "scribble-draw",
+        "value": "stroke-dashoffset 1 to 0, 1.5s at 0.25s; second stroke 1.1s at 0.85s",
+        "purpose": "Hero underline draws once; shown fully drawn under reduced motion."
+      },
+      {
+        "name": "reveal",
+        "value": "opacity 0 to 1, translateY(2rem) to 0, 0.9s",
+        "purpose": "Phone mockups and scalloped panels, once on scroll; shown immediately under reduced motion."
+      },
+      {
+        "name": "felt-star-tilt",
+        "value": "rotate(12deg) to rotate(4deg) scale(1.03), 0.45s",
+        "purpose": "Hover on phone slot."
+      },
+      {
+        "name": "badge-spin",
+        "value": "rotate(20deg), 0.5s",
+        "purpose": "Hover on scroll cue."
+      },
+      {
+        "name": "smooth-scroll",
+        "value": "scroll-behavior: smooth",
+        "purpose": "Only when prefers-reduced-motion is no-preference."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "narrow",
+        "value": "760px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Email Chip",
+      "kind": "button",
+      "refersTo": "email-chip",
+      "description": "Contact link as a pill with a pink envelope disc; hero first viewport.",
+      "html": "<div class=\"ds-dark\"><a class=\"ds-chip\" href=\"#\"><span class=\"ds-chip__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><rect x=\"3\" y=\"5\" width=\"18\" height=\"14\" rx=\"2\"/><path d=\"m3.5 6.5 8.5 6.5 8.5-6.5\"/></svg></span>hey@ashie.pics</a></div>",
+      "css": ".ds-dark{background:#0F0B10;padding:24px;} .ds-chip{display:inline-flex;align-items:center;gap:0.7rem;text-decoration:none;color:#F6EEE9;font:700 1.0625rem/1.65 Nunito,system-ui,sans-serif;padding:0.2rem 0.9rem 0.2rem 0.2rem;border-radius:999px;transition:background-color 0.2s;} .ds-chip:hover{background:#1A1318;} .ds-chip:focus-visible{outline:3px solid #F6EEE9;outline-offset:4px;} .ds-chip__icon{width:2.5rem;height:2.5rem;border-radius:50%;background:#E954AF;display:grid;place-items:center;} .ds-chip__icon svg{width:1.2rem;height:1.2rem;stroke:#0F0B10;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}"
+    },
+    {
+      "name": "Social Pills",
+      "kind": "chip",
+      "refersTo": "social-pill",
+      "description": "Caps social links on the pink closing footer; invert on hover.",
+      "html": "<div class=\"ds-pink\"><ul class=\"ds-socials\"><li><a href=\"#\">Instagram</a></li><li><a href=\"#\">TikTok</a></li><li><a href=\"#\">LinkedIn</a></li></ul></div>",
+      "css": ".ds-pink{background:#E954AF;padding:24px;} .ds-socials{display:flex;flex-wrap:wrap;gap:0.6rem;list-style:none;margin:0;padding:0;} .ds-socials a{display:inline-block;text-decoration:none;background:#0F0B10;color:#F6EEE9;padding:0.55rem 1.1rem;border-radius:999px;font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:0.14em;font-size:0.8125rem;line-height:1.3;} .ds-socials a:hover{background:#F6EEE9;color:#0F0B10;} .ds-socials a:focus-visible{outline:3px solid #0F0B10;outline-offset:4px;}"
+    },
+    {
+      "name": "Scalloped Panel",
+      "kind": "card",
+      "refersTo": "scallop-panel",
+      "description": "Signature pink container with scalloped edges cut by a radial-gradient mask.",
+      "html": "<div class=\"ds-dark\"><div class=\"ds-scallop\"><h4 class=\"ds-scallop__h\">WMSC 90.3FM</h4><p>festival and show coverage for the station's instagram.</p></div></div>",
+      "css": ".ds-dark{background:#0F0B10;padding:24px;} .ds-scallop{background:#E954AF;color:#0F0B10;padding:calc(28px + 1.75rem);font:400 1.125rem/1.6 Nunito,system-ui,sans-serif;-webkit-mask-image:linear-gradient(#000 0 0),radial-gradient(circle closest-side,#000 97%,#0000),radial-gradient(circle closest-side,#000 97%,#0000),radial-gradient(circle closest-side,#000 97%,#0000),radial-gradient(circle closest-side,#000 97%,#0000);-webkit-mask-size:calc(100% - 28px) calc(100% - 28px),28px 28px,28px 28px,28px 28px,28px 28px;-webkit-mask-position:50% 50%,0 0,0 100%,0 0,100% 0;-webkit-mask-repeat:no-repeat,round no-repeat,round no-repeat,no-repeat round,no-repeat round;mask-image:linear-gradient(#000 0 0),radial-gradient(circle closest-side,#000 97%,#0000),radial-gradient(circle closest-side,#000 97%,#0000),radial-gradient(circle closest-side,#000 97%,#0000),radial-gradient(circle closest-side,#000 97%,#0000);mask-size:calc(100% - 28px) calc(100% - 28px),28px 28px,28px 28px,28px 28px,28px 28px;mask-position:50% 50%,0 0,0 100%,0 0,100% 0;mask-repeat:no-repeat,round no-repeat,round no-repeat,no-repeat round,no-repeat round;} .ds-scallop__h{margin:0;font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:800;font-size:2.4rem;letter-spacing:-0.035em;line-height:0.9;} .ds-scallop p{margin:1rem 0 0;max-width:36ch;}"
+    },
+    {
+      "name": "Section Title with Rule",
+      "kind": "custom",
+      "refersTo": "headline",
+      "description": "Pink 800 headline followed by a 3px pink rule that ends in a four-point sparkle.",
+      "html": "<div class=\"ds-dark\"><h2 class=\"ds-h\">where i've worked</h2><div class=\"ds-rule\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\" width=\"30\" height=\"30\" aria-hidden=\"true\"><path d=\"M12 0C12.9 7.3 16.7 11.1 24 12 16.7 12.9 12.9 16.7 12 24 11.1 16.7 7.3 12.9 0 12 7.3 11.1 11.1 7.3 12 0Z\"/></svg></div></div>",
+      "css": ".ds-dark{background:#0F0B10;padding:24px;} .ds-h{margin:0;font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:800;font-variation-settings:'opsz' 96;font-size:4rem;letter-spacing:-0.035em;line-height:0.9;color:#E954AF;} .ds-rule{display:flex;align-items:center;margin-top:1.1rem;} .ds-rule::before{content:'';flex:1;height:3px;background:#E954AF;border-radius:3px;margin-right:-0.2rem;} .ds-rule svg{fill:#E954AF;width:1.9rem;height:1.9rem;}"
+    },
+    {
+      "name": "Marquee Band",
+      "kind": "custom",
+      "refersTo": "marquee-band",
+      "description": "Full-bleed pink band of caps words and starbursts drifting linearly; the only ambient motion.",
+      "html": "<div class=\"ds-marquee\"><div class=\"ds-marquee__track\"><span>Content</span><svg viewBox=\"0 0 100 100\" aria-hidden=\"true\"><polygon points=\"50,0 56.7,24.9 75,6.7 68.4,31.6 93.3,25 75.1,43.3 100,50 75.1,56.7 93.3,75 68.4,68.4 75,93.3 56.7,75.1 50,100 43.3,75.1 25,93.3 31.6,68.4 6.7,75 24.9,56.7 0,50 24.9,43.3 6.7,25 31.6,31.6 25,6.7 43.3,24.9\"/></svg><span>PR</span><svg viewBox=\"0 0 100 100\" aria-hidden=\"true\"><polygon points=\"50,0 56.7,24.9 75,6.7 68.4,31.6 93.3,25 75.1,43.3 100,50 75.1,56.7 93.3,75 68.4,68.4 75,93.3 56.7,75.1 50,100 43.3,75.1 25,93.3 31.6,68.4 6.7,75 24.9,56.7 0,50 24.9,43.3 6.7,25 31.6,31.6 25,6.7 43.3,24.9\"/></svg><span>Tour marketing</span><svg viewBox=\"0 0 100 100\" aria-hidden=\"true\"><polygon points=\"50,0 56.7,24.9 75,6.7 68.4,31.6 93.3,25 75.1,43.3 100,50 75.1,56.7 93.3,75 68.4,68.4 75,93.3 56.7,75.1 50,100 43.3,75.1 25,93.3 31.6,68.4 6.7,75 24.9,56.7 0,50 24.9,43.3 6.7,25 31.6,31.6 25,6.7 43.3,24.9\"/></svg><span>Content</span><svg viewBox=\"0 0 100 100\" aria-hidden=\"true\"><polygon points=\"50,0 56.7,24.9 75,6.7 68.4,31.6 93.3,25 75.1,43.3 100,50 75.1,56.7 93.3,75 68.4,68.4 75,93.3 56.7,75.1 50,100 43.3,75.1 25,93.3 31.6,68.4 6.7,75 24.9,56.7 0,50 24.9,43.3 6.7,25 31.6,31.6 25,6.7 43.3,24.9\"/></svg><span>PR</span><svg viewBox=\"0 0 100 100\" aria-hidden=\"true\"><polygon points=\"50,0 56.7,24.9 75,6.7 68.4,31.6 93.3,25 75.1,43.3 100,50 75.1,56.7 93.3,75 68.4,68.4 75,93.3 56.7,75.1 50,100 43.3,75.1 25,93.3 31.6,68.4 6.7,75 24.9,56.7 0,50 24.9,43.3 6.7,25 31.6,31.6 25,6.7 43.3,24.9\"/></svg><span>Tour marketing</span><svg viewBox=\"0 0 100 100\" aria-hidden=\"true\"><polygon points=\"50,0 56.7,24.9 75,6.7 68.4,31.6 93.3,25 75.1,43.3 100,50 75.1,56.7 93.3,75 68.4,68.4 75,93.3 56.7,75.1 50,100 43.3,75.1 25,93.3 31.6,68.4 6.7,75 24.9,56.7 0,50 24.9,43.3 6.7,25 31.6,31.6 25,6.7 43.3,24.9\"/></svg></div></div>",
+      "css": ".ds-marquee{background:#E954AF;color:#0F0B10;overflow:hidden;padding-block:1rem;} .ds-marquee__track{display:flex;align-items:center;gap:1.5rem;width:max-content;white-space:nowrap;font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:800;font-size:1.8rem;letter-spacing:0.08em;text-transform:uppercase;line-height:1;animation:ds-drift 20s linear infinite;} .ds-marquee__track svg{width:0.95em;height:0.95em;fill:#0F0B10;flex:none;} @keyframes ds-drift{to{transform:translateX(-50%);}} @media (prefers-reduced-motion:reduce){.ds-marquee__track{animation:none;}}"
+    },
+    {
+      "name": "Reel Tile with View Badge",
+      "kind": "card",
+      "refersTo": "reel-tile",
+      "description": "9:16 thumbnail in the four-column reel grid, with a Night caps view-count badge.",
+      "html": "<div class=\"ds-dark\"><p class=\"ds-label\"><svg viewBox=\"0 0 100 100\" aria-hidden=\"true\"><polygon points=\"50,0 56.7,24.9 75,6.7 68.4,31.6 93.3,25 75.1,43.3 100,50 75.1,56.7 93.3,75 68.4,68.4 75,93.3 56.7,75.1 50,100 43.3,75.1 25,93.3 31.6,68.4 6.7,75 24.9,56.7 0,50 24.9,43.3 6.7,25 31.6,31.6 25,6.7 43.3,24.9\"/></svg>top reels</p><div class=\"ds-grid\"><a href=\"#\"><span class=\"ds-thumb\"></span><span class=\"ds-views\">22k views</span></a><a href=\"#\"><span class=\"ds-thumb\"></span><span class=\"ds-views\">19k views</span></a><a href=\"#\"><span class=\"ds-thumb\"></span><span class=\"ds-views\">16k views</span></a><a href=\"#\"><span class=\"ds-thumb\"></span><span class=\"ds-views\">10k views</span></a></div></div>",
+      "css": ".ds-dark{background:#0F0B10;padding:24px;} .ds-label{display:flex;align-items:center;gap:0.6rem;color:#E954AF;margin:0 0 1.25rem;font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:0.14em;font-size:0.8125rem;line-height:1.3;} .ds-label svg{width:1.1rem;height:1.1rem;fill:#E954AF;} .ds-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0.5rem;} .ds-grid a{position:relative;display:block;overflow:hidden;border-radius:0.35rem;background:#1A1318;} .ds-thumb{display:block;aspect-ratio:9/16;background:linear-gradient(160deg,#45002E,#1A1318);transition:transform 0.5s cubic-bezier(0.16,1,0.3,1);} .ds-grid a:hover .ds-thumb{transform:scale(1.03);} .ds-grid a:focus-visible{outline:3px solid #F6EEE9;outline-offset:4px;} .ds-views{position:absolute;left:0.5rem;bottom:0.5rem;background:#0F0B10;color:#F6EEE9;padding:0.3rem 0.55rem;border-radius:0.3rem;font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:0.14em;font-size:0.8125rem;line-height:1.3;font-size:0.75rem;}"
+    },
+    {
+      "name": "Phone Mockup with Felt Star",
+      "kind": "custom",
+      "refersTo": "phone-mockup",
+      "description": "Black device frame holding one real post, lifted by a soft shadow, with a stitched felt star pinned to its corner.",
+      "html": "<div class=\"ds-dark\"><div class=\"ds-phone-slot\"><div class=\"ds-phone\"><div class=\"ds-screen\"></div></div><svg class=\"ds-felt\" viewBox=\"0 0 100 100\" aria-hidden=\"true\"><path fill=\"#E954AF\" stroke=\"#0F0B10\" stroke-width=\"2.5\" stroke-dasharray=\"4 4\" stroke-linejoin=\"round\" d=\"M50 6 62 36 94 38 69 58 78 90 50 72 22 90 31 58 6 38 38 36Z\"/></svg></div></div>",
+      "css": ".ds-dark{background:#0F0B10;padding:48px;} .ds-phone-slot{position:relative;width:14rem;} .ds-phone{background:#000;padding:0.7rem;outline:1px solid rgb(246 238 233 / 0.14);border-radius:2.8rem;box-shadow:0 1.5rem 3rem -1rem rgb(0 0 0 / 0.7),0 0.3rem 0.8rem rgb(0 0 0 / 0.5);} .ds-screen{position:relative;aspect-ratio:9/19.5;border-radius:2.15rem;background:#222;} .ds-screen::before{content:'';position:absolute;top:0.6rem;left:50%;translate:-50% 0;width:30%;height:1.5rem;border-radius:1rem;background:#000;} .ds-felt{position:absolute;top:-1.6rem;right:-1.8rem;width:5.5rem;height:5.5rem;transform:rotate(12deg);transition:transform 0.45s cubic-bezier(0.16,1,0.3,1);filter:drop-shadow(0 0.25rem 0.35rem rgb(16 16 16 / 0.22));} .ds-phone-slot:hover .ds-felt{transform:rotate(4deg) scale(1.03);} @media (prefers-reduced-motion:reduce){.ds-felt{transition:none;}}"
+    },
+    {
+      "name": "Scroll Cue Badge",
+      "kind": "button",
+      "refersTo": "hot-pink",
+      "description": "Scalloped pink rosette with a near-black arrow and a Soft Mauve line; rotates on hover, smooth-scrolls to Hello.",
+      "html": "<div class=\"ds-dark\"><a class=\"ds-cue\" href=\"#\"><svg class=\"ds-cue__badge\" viewBox=\"0 0 100 100\" aria-hidden=\"true\"><path fill=\"#E954AF\" d=\"M50 8A7.66 7.66 0 0 1 64.36 10.53A7.66 7.66 0 0 1 77 17.83A7.66 7.66 0 0 1 86.37 29A7.66 7.66 0 0 1 91.36 42.71A7.66 7.66 0 0 1 91.36 57.29A7.66 7.66 0 0 1 86.37 71A7.66 7.66 0 0 1 77 82.17A7.66 7.66 0 0 1 64.36 89.47A7.66 7.66 0 0 1 50 92A7.66 7.66 0 0 1 35.64 89.47A7.66 7.66 0 0 1 23 82.17A7.66 7.66 0 0 1 13.63 71A7.66 7.66 0 0 1 8.64 57.29A7.66 7.66 0 0 1 8.64 42.71A7.66 7.66 0 0 1 13.63 29A7.66 7.66 0 0 1 23 17.83A7.66 7.66 0 0 1 35.64 10.53A7.66 7.66 0 0 1 50 8Z\"/><path d=\"M50 30v38M36 55l14 14 14-14\" fill=\"none\" stroke=\"#0F0B10\" stroke-width=\"5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg><span class=\"ds-cue__text\">scroll to see what i keep busy online.</span></a></div>",
+      "css": ".ds-dark{background:#0F0B10;padding:24px;} .ds-cue{display:flex;align-items:center;gap:1rem;text-decoration:none;max-width:19rem;} .ds-cue__badge{width:6.25rem;height:6.25rem;flex:none;transition:transform 0.5s cubic-bezier(0.16,1,0.3,1);} .ds-cue:hover .ds-cue__badge{transform:rotate(20deg);} .ds-cue:focus-visible{outline:3px solid #F6EEE9;outline-offset:4px;border-radius:4px;} .ds-cue__text{font:400 1rem/1.35 Nunito,system-ui,sans-serif;color:#B9ADB3;} @media (prefers-reduced-motion:reduce){.ds-cue__badge{transition:none;}}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Sticker Scrapbook After Dark",
+    "overview": "A plain, quiet structure (one centered container, generous vertical breathing room, no nav) carries a handful of hand-made shapes that feel cut out and stuck on: a four-point sparkle, a twelve-point starburst, scalloped pink panels, a scalloped scroll badge, a cream scribble underline, a felt star with a stitched edge, and a cream cat sticker lounging on the name. The ground is near-black; hot pink is the lead voice and carries headlines, rules, shapes and whole bands. Cream is the reading color and the secondary display color.\n\nType does the loud work. Bricolage Grotesque at 800 with tight negative tracking makes oversized stacked headlines; Ballet script appears only as short, tilted, hand-signed accents; Nunito keeps body copy round and friendly. Composition breaks the SaaS skeleton through offsets rather than cards: staggered skill lines, alternating left/right case heads, script tilted off the baseline.\n\nThe palette was changed by the owner from the original spec's cream ground and indigo headlines to this dark ground with #E954AF leading (2026-09-27). The spec's shapes, type, section structure and motion rules still hold; its palette does not.",
+    "keyCharacteristics": [
+      "Near-black ground, hot pink lead, cream reading text; three colors do almost everything.",
+      "Oversized Bricolage 800 display, tight tracking, line-height under 1.",
+      "Drawn SVG shapes as the ornament system; no stock icons, no photos standing in for missing work.",
+      "Flat surfaces; depth only on physical objects (phone mockup, felt star).",
+      "One ambient motion (marquee drift); everything else plays once or on hover, and all of it stands still under reduced motion."
+    ],
+    "rules": [
+      {
+        "name": "The Pink Leads Rule",
+        "body": "Hot pink is the voice, not an accent: headlines, rules, shapes and full-bleed bands. Body paragraphs are never pink; they are cream on dark or near-black on pink.",
+        "section": "colors"
+      },
+      {
+        "name": "The Dark-On-Pink Rule",
+        "body": "Anything readable on a pink surface uses On Pink. Cream is allowed on pink only as a decorative shape (the closing sparkle), never as text.",
+        "section": "colors"
+      },
+      {
+        "name": "The Tight Display Rule",
+        "body": "Bricolage display always runs at weight 800, opsz 96, negative tracking (-0.035em to -0.045em) and line-height under 1. Balance-wrapped.",
+        "section": "typography"
+      },
+      {
+        "name": "The Signed Script Rule",
+        "body": "Ballet is a signature, not a typeface for sentences: two or three words, tilted, larger than the headline it joins (1.15em), in cream on dark or On Pink on pink.",
+        "section": "typography"
+      },
+      {
+        "name": "The Labels Follow Rule",
+        "body": "Caps labels name the thing they sit beside or under (a role under a case name, a group name over its grid). They never sit above a headline as a kicker.",
+        "section": "typography"
+      },
+      {
+        "name": "The Logo Row Rule",
+        "body": "Organization logos sit in fixed-height cells (clamp(5rem, 9vw, 7.5rem)), contained and centered; wide wordmarks cap at 62% of that height so every logo reads at similar visual weight. A logo that is missing falls back to the organization name set in 800 Bricolage.",
+        "section": "layout"
+      },
+      {
+        "name": "The Objects Only Rule",
+        "body": "Shadows belong to objects (phones, stickers). Panels, bands, tiles and chips stay flat. Shadows are soft and blurred; no hard offset shadows.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do set every headline in Bricolage 800 with negative tracking and line-height under 1, in Hot Pink on dark or On Pink on pink.",
+      "Do end each section headline with the pink title rule and sparkle.",
+      "Do put readable text on pink in On Pink (#0F0B10).",
+      "Do reach for the drawn shapes (sparkle, starburst, scallop, scribble, felt star) instead of icons for ornament.",
+      "Do keep the marquee the only ambient motion and give every animation a reduced-motion fallback.",
+      "Do size logos in fixed-height cells with wide wordmarks capped at 62% of the cell.",
+      "Do omit a block whose real asset is missing."
+    ],
+    "donts": [
+      "Don't set cream text on Hot Pink; it falls below 3:1.",
+      "Don't add placeholders, stock icons or stand-in imagery for missing work.",
+      "Don't put caps labels above headlines as kickers.",
+      "Don't add shadows to panels, bands or tiles, and don't use hard offset shadows anywhere.",
+      "Don't use Ballet for more than a few words or leave it untilted.",
+      "Don't reintroduce the spec PDF's cream ground or indigo headlines; the dark palette supersedes them."
+    ]
+  }
+}

@@ -143,17 +143,18 @@
     line-height: 0.8;
     letter-spacing: -0.045em;
   }
+  .hero__name { position: relative; z-index: 1; }
   .hero__name span { display: block; }
   .hero__name span + span { margin-left: 0.34em; }
   .hero__sticker {
     position: absolute;
-    left: 0.55em; top: -0.04em;
+    left: 2.07em; top: 0.63em;
     font-size: clamp(5rem, 21vw, 17.5rem);
-    width: 0.62em; height: auto; max-width: none;
+    width: 0.72em; height: auto; max-width: none;
     transform: rotate(-4deg);
     transform-origin: 20% 70%;
     pointer-events: none;
-    z-index: 1;
+    z-index: 0;
   }
   .hero__portrait {
     position: absolute;
@@ -440,7 +441,7 @@
     text-decoration: underline; text-decoration-thickness: 0.06em; text-underline-offset: 0.14em;
     overflow-wrap: anywhere;
   }
-  .closing__email:hover { color: var(--cream); }
+  .closing__email:hover { text-decoration-thickness: 0.11em; }
   .closing :focus-visible { outline-color: var(--on-pink); }
   .socials { display: flex; flex-wrap: wrap; gap: 0.6rem; list-style: none; padding: 0; margin: 2rem 0 0; }
   .socials a {
@@ -457,7 +458,6 @@
     .hello--solo .hello__body { grid-column: auto; }
     .hello__photo { order: 2; width: 80%; }
     .hello__panel { margin-left: 0; }
-    .hello__body { padding-bottom: 0; }
     .hello--solo .hello__body, .hello__body { padding-bottom: 3.5rem; }
     .feed { grid-template-columns: 1fr; }
     .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }

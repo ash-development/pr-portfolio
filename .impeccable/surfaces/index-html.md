@@ -10,9 +10,9 @@ Audience/job: label, agency, PR hiring leads deciding to hire Ash for social/con
 Constraints: design spec PDF is binding, section by section. Missing assets leave blocks out; config object at top of script holds asset paths.
 
 ## Direction contract
-THESIS: a sticker-scrapbook on cream, hand-made shapes (scallop, four-point sparkle, starburst, scribble) sitting on a plain structure; refuses the SaaS skeleton of hero + identical bands + card grid.
-OWN-WORLD: cream #FFF8F2 ground, hot pink #E953AF shapes and big type only, deep magenta #CE2A95 small pink text, indigo #3115A9 headlines, ink #101010 one band, charcoal #231F20 body. Bricolage Grotesque 800 display and caps labels, Ballet script once per use (intro, closing), Nunito body. Scalloped panels via radial-gradient mask.
-STORY: visitor meets her name and voice, sees what she does in plain words, sees the three places she works, then the actual work per role, then emails her.
-FIRST VIEWPORT: oversized indigo "Ash Schnoor" filling the width, pink scribble drawing under it, lowercase line under that, pink icon chip with email top-left of the line, scalloped pink scroll badge bottom-right with arrow. Portrait overlaps last letters when supplied.
+THESIS: a sticker scrapbook after dark: hand-made shapes (scallop, four-point sparkle, starburst, scribble, cat sticker) on a plain structure over a near-black ground; refuses the SaaS skeleton of hero + identical bands + card grid.
+OWN-WORLD: near-black #0F0B10 ground, #1A1318 lifted band, hot pink #E954AF as lead color (headlines, rules, shapes, scalloped panels, marquee and closing surfaces), cream #F6EEE9 body and secondary display, near-black text on pink. Bricolage Grotesque 800 display and caps labels, Ballet script accents, Nunito body. Scalloped panels via radial-gradient mask. Cream-and-pink drawn cat sticker on the hero name. (Palette changed from spec's cream ground by Ash, 2026-09-27.)
+STORY: visitor meets her name and voice, sees what she does in plain words, sees the four places she has worked, then the actual work per role, then emails her.
+FIRST VIEWPORT: oversized pink "Ash / Schnoor" stacked, cream cat lying behind the "no" of Schnoor, cream scribble drawing under it, lowercase line and pink email chip lower-left, scalloped pink scroll badge lower-right (smooth-scrolls to Hello). Portrait overlaps last letters when supplied.
 FORM: brief-pinned by spec; no concept-seed roll run. Signature motion: scribble draws once; marquee bands drift.
 FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance
