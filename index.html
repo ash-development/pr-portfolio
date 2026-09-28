@@ -29,6 +29,7 @@
 
   *, *::before, *::after { box-sizing: border-box; }
   html { scrollbar-color: var(--pink) var(--bg); }
+  @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
   body {
     margin: 0;
     background: var(--bg);
