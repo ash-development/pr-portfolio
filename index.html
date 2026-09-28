@@ -3,537 +3,735 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ash Schnoor — Portfolio</title>
-<meta name="description" content="Ash Schnoor — music publicist and social strategist. Big Picture Media, Better Noise Music, WMSC 90.3FM.">
+<title>Ash Schnoor</title>
+<meta name="description" content="Ash Schnoor: social media and content, mostly for music. WMSC 90.3FM, Better Noise Music, Big Picture Media.">
+<meta name="theme-color" content="#0F0B10">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Alex+Brush&family=Work+Sans:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Ballet:opsz@16..72&family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Nunito:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <style>
   :root {
-    --ink: #0E0C10;
-    --pink: #FF3FA6;
-    --bone: #F5EFE2;
-    --cocoa: #8B5A2B;
-    --blush: #FBD9E4;
-    --white: #FFFFFF;
-    --rule: rgba(255, 255, 255, 0.18);
-    --gutter: clamp(20px, 5vw, 72px);
+    --bg: #0F0B10;
+    --surface: #1A1318;
+    --cream: #F6EEE9;
+    --soft: #B9ADB3;
+    --pink: #E954AF;
+    --on-pink: #0F0B10;
 
-    --display: "Anton", "Archivo Black", Impact, sans-serif;
-    --script: "Alex Brush", cursive;
-    --body: "Work Sans", system-ui, sans-serif;
+    --display: "Bricolage Grotesque", system-ui, sans-serif;
+    --script: "Ballet", cursive;
+    --body: "Nunito", system-ui, sans-serif;
+
+    --gutter: clamp(1rem, 4vw, 3.5rem);
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+    color-scheme: dark;
   }
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-
-  html { background: var(--ink); }
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scrollbar-color: var(--pink) var(--bg); }
   body {
-    background: var(--ink);
-    color: var(--white);
-    font-family: var(--body);
-    font-weight: 400;
-    font-size: 17px;
-    line-height: 1.6;
+    margin: 0;
+    background: var(--bg);
+    color: var(--cream);
+    font: 400 1.0625rem/1.65 var(--body);
     -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: clip;
+    caret-color: var(--pink);
   }
-
+  ::selection { background: var(--pink); color: var(--on-pink); }
   img { display: block; max-width: 100%; }
-  a { color: inherit; }
+  a { color: inherit; text-decoration-thickness: 2px; text-underline-offset: 0.2em; }
+  :focus-visible { outline: 3px solid var(--cream); outline-offset: 4px; border-radius: 4px; }
+  [hidden] { display: none !important; }
 
-  /* Tracked small caps: navigation, captions, labels */
-  .label {
-    font-family: var(--body);
-    font-weight: 500;
-    font-size: 11px;
-    letter-spacing: 0.22em;
+  .wrap { width: min(100% - 2 * var(--gutter), 78rem); margin-inline: auto; }
+
+  .display {
+    font-family: var(--display);
+    font-weight: 800;
+    font-variation-settings: "opsz" 96;
+    letter-spacing: -0.035em;
+    line-height: 0.9;
+    color: var(--pink);
+    margin: 0;
+    text-wrap: balance;
+  }
+  .caps {
+    font-family: var(--display);
+    font-weight: 700;
     text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 0.8125rem;
+    line-height: 1.3;
+  }
+  .script { font-family: var(--script); font-weight: 400; line-height: 1; }
+
+  /* Drawn shapes ------------------------------------------------------ */
+
+  .sparkle { width: 1em; height: 1em; fill: var(--pink); flex: none; }
+
+  /* Section title: pink rule that ends in a four-point sparkle */
+  .title-rule { display: flex; align-items: center; gap: 0; margin-top: 1.1rem; }
+  .title-rule::before {
+    content: ""; flex: 1; height: 3px; background: var(--pink); border-radius: 3px;
+    margin-right: -0.2rem;
+  }
+  .title-rule .sparkle { width: 1.9rem; height: 1.9rem; }
+
+  /* Scalloped panel: radial-gradient mask. Circles run along each edge,
+     a rectangle inset by one radius fills the middle. */
+  .scallop {
+    --r: 14px;
+    background: var(--pink);
+    color: var(--on-pink);
+    padding: calc(var(--r) * 2 + clamp(1.25rem, 3vw, 2.25rem));
+    -webkit-mask-image:
+      linear-gradient(#000 0 0),
+      radial-gradient(circle closest-side, #000 97%, #0000),
+      radial-gradient(circle closest-side, #000 97%, #0000),
+      radial-gradient(circle closest-side, #000 97%, #0000),
+      radial-gradient(circle closest-side, #000 97%, #0000);
+    -webkit-mask-size:
+      calc(100% - 2 * var(--r)) calc(100% - 2 * var(--r)),
+      calc(2 * var(--r)) calc(2 * var(--r)),
+      calc(2 * var(--r)) calc(2 * var(--r)),
+      calc(2 * var(--r)) calc(2 * var(--r)),
+      calc(2 * var(--r)) calc(2 * var(--r));
+    -webkit-mask-position: 50% 50%, 0 0, 0 100%, 0 0, 100% 0;
+    -webkit-mask-repeat: no-repeat, round no-repeat, round no-repeat, no-repeat round, no-repeat round;
+    mask-image:
+      linear-gradient(#000 0 0),
+      radial-gradient(circle closest-side, #000 97%, #0000),
+      radial-gradient(circle closest-side, #000 97%, #0000),
+      radial-gradient(circle closest-side, #000 97%, #0000),
+      radial-gradient(circle closest-side, #000 97%, #0000);
+    mask-size:
+      calc(100% - 2 * var(--r)) calc(100% - 2 * var(--r)),
+      calc(2 * var(--r)) calc(2 * var(--r)),
+      calc(2 * var(--r)) calc(2 * var(--r)),
+      calc(2 * var(--r)) calc(2 * var(--r)),
+      calc(2 * var(--r)) calc(2 * var(--r));
+    mask-position: 50% 50%, 0 0, 0 100%, 0 0, 100% 0;
+    mask-repeat: no-repeat, round no-repeat, round no-repeat, no-repeat round, no-repeat round;
   }
 
-  .rule {
-    border: 0;
-    border-top: 1px solid var(--rule);
-    margin: 0 var(--gutter);
-  }
+  /* 1. Hero ----------------------------------------------------------- */
 
-  /* ---------- Hero ---------- */
   .hero {
     position: relative;
     min-height: 100svh;
     display: grid;
-    grid-template-rows: auto 1fr auto;
-    padding: 28px var(--gutter) 40px;
-    overflow: hidden;
-    isolation: isolate;
+    align-content: center;
+    padding-block: clamp(3rem, 8vh, 6rem) clamp(2.5rem, 6vh, 4.5rem);
   }
-
-  /* Photo slot. Soft spotlight glow sits over it; with no photo, the glow alone reads as the gallery light. */
-  .hero__photo {
+  .hero__name-wrap { position: relative; width: fit-content; }
+  .hero__name {
+    font-size: clamp(5rem, 21vw, 17.5rem);
+    line-height: 0.8;
+    letter-spacing: -0.045em;
+  }
+  .hero__name span { display: block; }
+  .hero__name span + span { margin-left: 0.34em; }
+  .hero__sticker {
     position: absolute;
-    inset: 0;
-    z-index: -2;
+    left: 1.02em; top: -0.42em;
+    font-size: clamp(5rem, 21vw, 17.5rem);
+    width: 0.62em; height: auto;
+    transform: rotate(-8deg);
+    pointer-events: none;
   }
-  .hero__photo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    filter: grayscale(0.35) brightness(0.55) contrast(1.05);
-  }
-  .hero::before {
-    content: "";
+  .hero__portrait {
     position: absolute;
-    inset: 0;
-    z-index: -1;
-    background:
-      radial-gradient(ellipse 42% 55% at 50% 42%, rgba(255, 255, 255, 0.10), transparent 70%),
-      linear-gradient(to bottom, rgba(14, 12, 16, 0.2), rgba(14, 12, 16, 0.85) 92%);
+    right: -4%; bottom: -12%;
+    height: 118%; width: auto; max-width: none;
+    z-index: 2;
+    pointer-events: none;
   }
 
-  .hero__top {
-    display: flex;
-    justify-content: space-between;
-    color: var(--pink);
-  }
-
-  .hero__center {
-    align-self: center;
-    position: relative;
-    padding: 6vh 0 4vh;
-  }
-
-  .wordmark {
-    font-family: var(--display);
-    font-weight: 400;
-    color: var(--pink);
-    font-size: clamp(4rem, 16.5vw, 17rem);
-    line-height: 0.86;
-    letter-spacing: -0.005em;
-    text-transform: uppercase;
-    text-align: center;
-    white-space: nowrap;
-    will-change: transform;
-  }
-
-  .signature {
-    position: absolute;
-    right: 4%;
-    bottom: -0.2em;
-    font-family: var(--script);
-    color: var(--pink);
-    font-size: clamp(2.6rem, 6.5vw, 6rem);
-    line-height: 1;
-    transform: rotate(-7deg);
-    text-shadow: 0 0 24px rgba(14, 12, 16, 0.9);
-  }
-
-  .sparkle {
-    position: absolute;
-    left: 9%;
-    top: -0.4em;
-    width: clamp(36px, 5vw, 72px);
+  .scribble {
+    display: block;
+    width: 92%;
     height: auto;
-    color: var(--pink);
+    margin: -0.2rem 0 0 6%;
+    overflow: visible;
   }
+  .scribble path {
+    fill: none; stroke: var(--cream); stroke-width: 7;
+    stroke-linecap: round; stroke-linejoin: round;
+  }
+  .js .scribble path { stroke-dasharray: 1; stroke-dashoffset: 1; animation: draw 1.5s var(--ease-out) 0.25s forwards; }
+  .js .scribble path + path { animation-delay: 0.85s; animation-duration: 1.1s; }
+  @keyframes draw { to { stroke-dashoffset: 0; } }
 
-  .hero__bottom {
-    display: flex;
-    justify-content: center;
+  .hero__meta {
+    display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between;
+    gap: 2rem 3rem;
+    margin-top: clamp(1.75rem, 4vh, 3rem);
+    position: relative; z-index: 3;
   }
-
-  .pill {
-    display: inline-block;
-    background: var(--blush);
-    color: var(--ink);
-    border-radius: 999px;
-    padding: 9px 22px 8px;
-    font-size: 14px;
-    letter-spacing: 0.02em;
-  }
-
-  /* ---------- Intro (Bone alternate) ---------- */
-  .intro {
-    background: var(--bone);
-    color: var(--cocoa);
-    padding: clamp(72px, 12vw, 160px) var(--gutter) clamp(64px, 9vw, 120px);
-    display: grid;
-    grid-template-columns: 7fr 4fr;
-    gap: clamp(40px, 8vw, 140px);
-    align-items: end;
-  }
-  .intro .label { color: var(--cocoa); opacity: 0.75; }
-  .intro__bio p {
-    margin-top: 20px;
-    font-size: clamp(1.4rem, 2.6vw, 2.2rem);
-    line-height: 1.3;
+  .hero__lede {
+    font: 700 clamp(1.25rem, 2.2vw, 1.75rem)/1.25 var(--display);
+    letter-spacing: -0.015em;
+    margin: 0 0 1rem;
     max-width: 22ch;
   }
-  .intro__roles {
-    border-top: 1px solid rgba(139, 90, 43, 0.35);
-  }
-  .intro__roles li {
-    list-style: none;
-    display: flex;
-    justify-content: space-between;
-    gap: 16px;
-    padding: 14px 0;
-    border-bottom: 1px solid rgba(139, 90, 43, 0.35);
-    color: var(--cocoa);
-  }
-  .intro__roles li span:last-child { opacity: 0.7; text-align: right; }
-  /* Writing credits: the other side of the pitch */
-  .intro__press { margin-top: 28px; border-top: 1px solid rgba(139, 90, 43, 0.35); }
-
-  /* ---------- Role spreads ---------- */
-  .spreads {
-    padding: clamp(40px, 6vw, 80px) 0;
-  }
-
-  .spread {
-    display: grid;
-    grid-template-columns: 6fr 5fr;
-    gap: clamp(32px, 6vw, 110px);
-    align-items: center;
-    padding: clamp(56px, 8vw, 120px) var(--gutter);
-  }
-  .spread + .spread { border-top: 1px solid var(--rule); margin: 0 var(--gutter); padding-left: 0; padding-right: 0; }
-  .spread:first-child { margin: 0 var(--gutter); padding-left: 0; padding-right: 0; }
-
-  .spread--flip { grid-template-columns: 5fr 6fr; }
-  .spread--flip .spread__media { order: 2; }
-
-  /* Slight differences in scale keep the three spreads from stamping out the same shape */
-  .spread:nth-child(1) .spread__media { aspect-ratio: 4 / 5; }
-  .spread:nth-child(2) .spread__media { aspect-ratio: 5 / 4; }
-  .spread:nth-child(3) .spread__media { aspect-ratio: 3 / 4; max-width: 86%; }
-
-  .spread__media {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-  }
-  .spread__media img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    filter: grayscale(0.2) contrast(1.05) brightness(0.9);
-  }
-  /* Flat color block stand-in until real photography exists */
-  .spread__media--empty { background: var(--blush); }
-  .spread:nth-child(2) .spread__media--empty { background: #1A1620; border: 1px solid var(--rule); }
-  .spread__media .label {
-    position: absolute;
-    left: 16px;
-    bottom: 14px;
-    color: var(--ink);
-  }
-  .spread:nth-child(2) .spread__media .label { color: rgba(255, 255, 255, 0.55); }
-
-  .spread__index { color: rgba(255, 255, 255, 0.55); }
-  .spread__title {
-    font-family: var(--display);
-    font-weight: 400;
-    color: var(--pink);
-    text-transform: uppercase;
-    font-size: clamp(3rem, 7vw, 6.5rem);
-    line-height: 0.9;
-    margin: 18px 0 20px;
-  }
-  .spread__role { color: var(--white); margin-bottom: 14px; }
-  .spread__caption {
-    font-size: 1.15rem;
-    max-width: 30ch;
-    color: rgba(255, 255, 255, 0.86);
-  }
-
-  /* ---------- The work ---------- */
-  .work {
-    padding: clamp(72px, 10vw, 140px) var(--gutter);
-  }
-  .work__head { display: flex; justify-content: space-between; margin-bottom: 40px; color: rgba(255,255,255,0.55); }
-  .work__grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 56px 32px;
-  }
-  .work__item figure { margin: 0; }
-  .work__frame {
-    position: relative;
-    aspect-ratio: 4 / 5;
-    overflow: hidden;
-  }
-  .work__frame img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.5s ease;
-  }
-  .work__frame .label {
-    position: absolute;
-    left: 14px;
-    bottom: 12px;
-    color: var(--white);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-  .work__item a:hover .work__frame img,
-  .work__item a:focus-visible .work__frame img { transform: scale(1.02); }
-  .work__item a:hover .work__frame .label,
-  .work__item a:focus-visible .work__frame .label { opacity: 1; }
-  .work__item figcaption { margin-top: 12px; color: rgba(255,255,255,0.6); }
-  .work__item a { text-decoration: none; }
-
-  /* ---------- Close ---------- */
-  .close {
-    margin: clamp(48px, 7vw, 96px) var(--gutter) var(--gutter);
-    border: 1px solid var(--rule);
-    padding: clamp(48px, 8vw, 110px) clamp(24px, 5vw, 72px);
-    display: grid;
-    grid-template-columns: 1fr auto;
-    grid-template-rows: auto auto auto;
-    gap: 28px 40px;
-  }
-  .close__label { color: rgba(255,255,255,0.55); }
-  .close__corner { color: rgba(255,255,255,0.55); text-align: right; }
-  .close__email {
-    grid-column: 1 / -1;
-    font-family: var(--display);
-    font-weight: 400;
-    color: var(--pink);
-    text-transform: uppercase;
-    font-size: clamp(2.4rem, 8.5vw, 8rem);
-    line-height: 0.95;
+  .chip {
+    display: inline-flex; align-items: center; gap: 0.7rem;
     text-decoration: none;
-    word-break: break-word;
-    text-decoration-thickness: 2px;
-    text-underline-offset: 0.12em;
+    font-weight: 700;
+    padding: 0.2rem 0.9rem 0.2rem 0.2rem;
+    border-radius: 999px;
+    transition: background-color 0.2s;
   }
-  .close__email:hover, .close__email:focus-visible { text-decoration-line: underline; }
-  .close__socials {
-    grid-column: 1 / -1;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px 36px;
-    list-style: none;
+  .chip:hover { background: var(--surface); }
+  .chip__icon {
+    width: 2.5rem; height: 2.5rem; border-radius: 50%;
+    background: var(--pink);
+    display: grid; place-items: center;
+    flex: none;
   }
-  .close__socials a { text-decoration: none; color: rgba(255,255,255,0.8); }
-  /* The single pink hover state */
-  .close__socials a:hover, .close__socials a:focus-visible { color: var(--pink); }
+  .chip__icon svg { width: 1.2rem; height: 1.2rem; stroke: var(--on-pink); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 
-  footer {
-    display: flex;
-    justify-content: space-between;
-    padding: 0 var(--gutter) 28px;
-    color: rgba(255,255,255,0.4);
+  .scroll-cue {
+    display: flex; align-items: center; gap: 1rem;
+    text-decoration: none;
+    max-width: 19rem;
+  }
+  .scroll-cue__badge { width: 6.25rem; height: 6.25rem; flex: none; transition: transform 0.5s var(--ease-out); }
+  .scroll-cue:hover .scroll-cue__badge { transform: rotate(20deg); }
+  .scroll-cue__text { font-size: 1rem; line-height: 1.35; color: var(--soft); }
+
+  /* Marquee bands ----------------------------------------------------- */
+
+  .marquee {
+    background: var(--pink);
+    color: var(--on-pink);
+    overflow: hidden;
+    padding-block: clamp(0.8rem, 1.6vw, 1.15rem);
+  }
+  .marquee__track { display: flex; width: max-content; }
+  .marquee__run {
+    display: flex; align-items: center; flex: none;
+    gap: clamp(1rem, 2.4vw, 2rem);
+    padding-right: clamp(1rem, 2.4vw, 2rem);
+    white-space: nowrap;
+    font-family: var(--display); font-weight: 800;
+    font-size: clamp(1.3rem, 2.6vw, 2.1rem);
+    letter-spacing: 0.08em; text-transform: uppercase;
+    line-height: 1;
+  }
+  .marquee__run svg { width: 0.95em; height: 0.95em; fill: var(--on-pink); flex: none; }
+  .js .marquee__track { animation: drift var(--speed, 38s) linear infinite; }
+  .marquee--reverse .marquee__track { animation-direction: reverse; }
+  @keyframes drift { to { transform: translateX(-50%); } }
+
+  /* 3. Hello ---------------------------------------------------------- */
+
+  .hello {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    gap: clamp(1.5rem, 4vw, 4rem);
+    align-items: end;
+    padding-top: clamp(4.5rem, 10vw, 8rem);
+  }
+  .hello__photo { align-self: end; margin-bottom: 0; }
+  .hello__photo img { width: 100%; height: auto; margin-bottom: 0; }
+  .hello--solo { grid-template-columns: minmax(0, 1fr) minmax(0, 7fr); }
+  .hello--solo .hello__body { grid-column: 2; }
+  .hello__body { padding-bottom: clamp(3.5rem, 8vw, 6rem); }
+  .hello__title { font-size: clamp(3rem, 8vw, 6rem); display: flex; flex-wrap: wrap; align-items: baseline; column-gap: 0.25em; }
+  .hello__script {
+    display: inline-flex; align-items: center; gap: 0.15em;
+    font-family: var(--script);
+    font-weight: 400; letter-spacing: 0;
+    font-size: 1.15em;
+    color: var(--cream);
+    transform: translateY(0.18em) rotate(-4deg);
+    white-space: nowrap;
+  }
+  .hello__script .sparkle { width: 0.55em; height: 0.55em; }
+  .hello__panel { margin-top: clamp(1.5rem, 3vw, 2.5rem); margin-left: clamp(0rem, 6vw, 5rem); }
+  .hello__panel p {
+    margin: 0;
+    font-size: clamp(1.125rem, 1.6vw, 1.3rem);
+    line-height: 1.6;
+    max-width: 38ch;
   }
 
-  /* ---------- Motion ---------- */
-  .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.8s ease, transform 0.8s ease; }
-  .reveal.is-in { opacity: 1; transform: none; }
+  /* 4. What I do ------------------------------------------------------ */
+
+  .what { padding-block: clamp(4rem, 9vw, 7.5rem) clamp(4.5rem, 10vw, 8.5rem); }
+  .what__head { max-width: 52rem; }
+  .what__title { font-size: clamp(2.6rem, 7vw, 5.5rem); }
+  .what__body { font-size: clamp(1.125rem, 1.6vw, 1.3rem); max-width: 40ch; margin: 1.75rem 0 0; text-wrap: pretty; }
+  .skills { list-style: none; margin: clamp(2.5rem, 6vw, 4.5rem) 0 0; padding: 0; }
+  .skills li {
+    font-family: var(--display); font-weight: 700;
+    font-size: clamp(1.6rem, 4.4vw, 3.4rem);
+    letter-spacing: -0.03em; line-height: 1.12;
+    color: var(--cream);
+  }
+  .skills li:nth-child(1) { margin-left: 0; }
+  .skills li:nth-child(2) { margin-left: 22%; }
+  .skills li:nth-child(3) { margin-left: 9%; }
+  .skills li:nth-child(4) { margin-left: 41%; }
+  .skills li:nth-child(5) { margin-left: 16%; }
+  .skills li:nth-child(6) { margin-left: 33%; }
+
+  /* 6. Where I've worked --------------------------------------------- */
+
+  .worked {
+    background: var(--surface);
+    color: var(--cream);
+    padding-block: clamp(4rem, 9vw, 7rem);
+  }
+  .worked__title { color: var(--pink); font-size: clamp(2.6rem, 7vw, 5.5rem); }
+  .worked__list { list-style: none; margin: clamp(2.5rem, 6vw, 4.5rem) 0 0; padding: 0; display: grid; gap: clamp(2rem, 4vw, 3rem); }
+  .worked__item { display: flex; flex-direction: column; gap: 0.5rem; }
+  .worked__item:nth-child(2) { align-items: center; text-align: center; }
+  .worked__item:nth-child(3) { align-items: flex-end; text-align: right; }
+  .worked__item:nth-child(4) { padding-left: 14%; }
+  .wordmark small, .case__sub {
+    display: block;
+    font-family: var(--display); font-weight: 700;
+    font-size: 0.5em; letter-spacing: -0.02em; line-height: 1.1;
+    margin-top: 0.15em;
+    color: var(--soft);
+  }
+  .wordmark {
+    font-family: var(--display); font-weight: 800;
+    font-size: clamp(2rem, 6.4vw, 5rem);
+    letter-spacing: -0.04em; line-height: 0.95;
+  }
+  .wordmark img { height: clamp(3rem, 8vw, 6rem); width: auto; }
+  .worked__role { color: var(--pink); }
+
+  /* 7. Case studies --------------------------------------------------- */
+
+  .work { padding-block: clamp(4.5rem, 10vw, 8rem) clamp(3rem, 6vw, 5rem); }
+  .work__title { font-size: clamp(2.6rem, 7vw, 5.5rem); }
+
+  .case { padding-top: clamp(4rem, 9vw, 7rem); }
+  .case__name { font-size: clamp(2.4rem, 6.6vw, 5.25rem); color: var(--cream); }
+  .case__role { color: var(--pink); margin: 1rem 0 0; }
+  .case__line {
+    font-style: italic;
+    font-size: clamp(1.2rem, 2vw, 1.55rem);
+    line-height: 1.4;
+    margin: 0.6rem 0 0;
+    max-width: 34ch;
+    text-wrap: balance;
+  }
+  .case:nth-of-type(even) .case__head { margin-left: auto; width: fit-content; max-width: 100%; text-align: right; }
+  .case:nth-of-type(even) .case__line { margin-left: auto; }
+
+  .feed {
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+    gap: clamp(2rem, 5vw, 5rem);
+    align-items: center;
+    margin-top: clamp(2.5rem, 5vw, 4rem);
+  }
+  .case:nth-of-type(even) .feed .phone-slot { order: 2; }
+
+  .phone-slot { position: relative; justify-self: center; width: min(100%, 20rem); }
+  .phone {
+    background: #000;
+    padding: 0.7rem;
+    outline: 1px solid rgb(246 238 233 / 0.14);
+    border-radius: 2.8rem;
+    box-shadow: 0 1.5rem 3rem -1rem rgb(0 0 0 / 0.7), 0 0.3rem 0.8rem rgb(0 0 0 / 0.5);
+  }
+  .phone__screen {
+    position: relative;
+    aspect-ratio: 9 / 19.5;
+    border-radius: 2.15rem;
+    overflow: hidden;
+    background: #222;
+  }
+  .phone__screen::before {
+    content: ""; position: absolute; z-index: 1;
+    top: 0.6rem; left: 50%; translate: -50% 0;
+    width: 30%; height: 1.5rem; border-radius: 1rem; background: #000;
+  }
+  .phone__screen img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+  .felt-star {
+    position: absolute; top: -1.6rem; right: -1.8rem;
+    width: 5.5rem; height: 5.5rem;
+    transform: rotate(12deg);
+    transition: transform 0.45s var(--ease-out);
+    filter: drop-shadow(0 0.25rem 0.35rem rgb(16 16 16 / 0.22));
+  }
+  .phone-slot:hover .felt-star { transform: rotate(4deg) scale(1.03); }
+  .feed__panel h4 { font-size: clamp(1.8rem, 3.6vw, 2.8rem); color: var(--on-pink); }
+  .feed__panel p { margin: 1rem 0 0; font-size: 1.125rem; max-width: 36ch; }
+
+  .group { margin-top: clamp(3rem, 6vw, 4.5rem); }
+  .group__label { display: flex; align-items: center; gap: 0.6rem; color: var(--pink); margin: 0 0 1.25rem; }
+  .group__label svg { width: 1.1rem; height: 1.1rem; fill: var(--pink); flex: none; }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr));
+    gap: 0.5rem;
+  }
+  .grid a { display: block; overflow: hidden; border-radius: 0.35rem; background: var(--surface); }
+  .grid img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; transition: transform 0.5s var(--ease-out); }
+  .grid a:hover img { transform: scale(1.03); }
+
+  .js .reveal { opacity: 0; transform: translateY(2rem); transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out); }
+  .js .reveal.is-in { opacity: 1; transform: none; }
+
+  /* 8. Closing -------------------------------------------------------- */
+
+  .closing {
+    background: var(--pink);
+    color: var(--on-pink);
+    padding-block: clamp(5rem, 12vw, 9rem) clamp(3rem, 6vw, 4.5rem);
+    margin-top: clamp(4rem, 8vw, 6rem);
+  }
+  .closing__title { color: var(--on-pink); font-size: clamp(3.4rem, 11vw, 9.5rem); line-height: 0.86; max-width: 9ch; }
+  .closing__script {
+    display: inline-flex; align-items: center; gap: 0.2em;
+    font-size: clamp(4.5rem, 13vw, 10rem);
+    color: var(--on-pink);
+    margin: 0.2em 0 0 clamp(1rem, 12vw, 10rem);
+    transform: rotate(-5deg);
+  }
+  .closing__script .sparkle { fill: var(--cream); width: 0.5em; height: 0.5em; }
+  .closing__email {
+    display: inline-block;
+    margin-top: clamp(2rem, 5vw, 3.5rem);
+    font-family: var(--display); font-weight: 800;
+    font-size: clamp(2rem, 7vw, 5.5rem);
+    letter-spacing: -0.04em; line-height: 1;
+    color: var(--on-pink);
+    text-decoration: underline; text-decoration-thickness: 0.06em; text-underline-offset: 0.14em;
+    overflow-wrap: anywhere;
+  }
+  .closing__email:hover { color: var(--cream); }
+  .closing :focus-visible { outline-color: var(--on-pink); }
+  .socials { display: flex; flex-wrap: wrap; gap: 0.6rem; list-style: none; padding: 0; margin: 2rem 0 0; }
+  .socials a {
+    display: inline-block; text-decoration: none;
+    background: var(--on-pink); color: var(--cream);
+    padding: 0.55rem 1.1rem; border-radius: 999px;
+  }
+  .socials a:hover { background: var(--cream); color: var(--on-pink); }
+
+  /* Responsive -------------------------------------------------------- */
+
+  @media (max-width: 760px) {
+    .hello, .hello--solo { grid-template-columns: 1fr; }
+    .hello--solo .hello__body { grid-column: auto; }
+    .hello__photo { order: 2; width: 80%; }
+    .hello__panel { margin-left: 0; }
+    .hello__body { padding-bottom: 0; }
+    .hello--solo .hello__body, .hello__body { padding-bottom: 3.5rem; }
+    .feed { grid-template-columns: 1fr; }
+    .case:nth-of-type(even) .feed .phone-slot { order: 0; }
+    .skills li:nth-child(n) { margin-left: 0; }
+    .skills li:nth-child(even) { margin-left: 12%; }
+    .scallop { --r: 11px; }
+    .scroll-cue__badge { width: 5rem; height: 5rem; }
+    .worked__item:nth-child(n) { align-items: flex-start; text-align: left; }
+    .worked__item:nth-child(2) { padding-left: 8%; }
+    .worked__item:nth-child(3) { padding-left: 16%; }
+    .worked__item:nth-child(4) { padding-left: 0; }
+  }
 
   @media (prefers-reduced-motion: reduce) {
-    .reveal { opacity: 1; transform: none; transition: none; }
-    .wordmark { transform: none !important; }
-    .work__frame img { transition: none; }
-  }
-
-  a:focus-visible { outline: 1px solid var(--pink); outline-offset: 4px; }
-
-  /* ---------- Responsive ---------- */
-  @media (max-width: 820px) {
-    .intro { grid-template-columns: 1fr; align-items: start; }
-    .spread, .spread--flip { grid-template-columns: 1fr; }
-    .spread--flip .spread__media { order: 0; }
-    .spread:nth-child(3) .spread__media { max-width: 100%; }
-    .work__grid { grid-template-columns: repeat(2, 1fr); gap: 40px 20px; }
-  }
-
-  @media (max-width: 560px) {
-    .wordmark { white-space: normal; font-size: 27vw; }
-    .wordmark span { display: block; }
-    .signature { right: 0; bottom: -0.55em; }
-    .sparkle { left: auto; right: 6%; top: -0.9em; }
-    .work__grid { grid-template-columns: 1fr; }
-    .close { grid-template-columns: 1fr; }
-    .close__corner { text-align: left; }
-    footer { flex-direction: column; gap: 6px; }
+    .js .marquee__track { animation: none; }
+    .js .scribble path { animation: none; stroke-dashoffset: 0; }
+    .js .reveal { opacity: 1; transform: none; transition: none; }
+    .felt-star, .scroll-cue__badge { transition: none; }
   }
 </style>
 </head>
 <body>
 
-<header class="hero">
-  <div class="hero__photo" id="hero-photo"></div>
-
-  <nav class="hero__top">
-    <span class="label">Welcome to</span>
-    <span class="label">Portfolio</span>
-  </nav>
-
-  <div class="hero__center">
-    <svg class="sparkle" viewBox="0 0 100 100" aria-hidden="true">
-      <path fill="currentColor" d="M50 0 C53 34 66 47 100 50 C66 53 53 66 50 100 C47 66 34 53 0 50 C34 47 47 34 50 0 Z"/>
-    </svg>
-    <h1 class="wordmark" id="wordmark"><span>Ash</span> <span>Schnoor</span></h1>
-    <p class="signature" aria-hidden="true">Ash Schnoor</p>
-  </div>
-
-  <div class="hero__bottom">
-    <span class="pill">music publicist + social strategist</span>
-  </div>
-</header>
-
-<section class="intro reveal" aria-label="About">
-  <div class="intro__bio">
-    <span class="label">About</span>
-    <p>i get artists' stories in front of the people who cover them, then keep the story moving on every feed after.</p>
-  </div>
-  <ul class="intro__roles label" aria-label="Current roles">
-    <li><span>Big Picture Media</span><span>Publicity</span></li>
-    <li><span>Better Noise Music</span><span>Tour Marketing</span></li>
-    <li><span>WMSC 90.3FM</span><span>Social &amp; Web Director</span></li>
-    <li class="intro__press"><span>Melodic Magazine</span><span>Contributing Writer</span></li>
-    <li><span>Crossfade Magazine</span><span>Writer</span></li>
-  </ul>
-</section>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="sparkle" viewBox="0 0 24 24"><path d="M12 0C12.9 7.3 16.7 11.1 24 12 16.7 12.9 12.9 16.7 12 24 11.1 16.7 7.3 12.9 0 12 7.3 11.1 11.1 7.3 12 0Z"/></symbol>
+    <symbol id="starburst" viewBox="0 0 100 100"><polygon points="50,0 56.7,24.9 75,6.7 68.4,31.6 93.3,25 75.1,43.3 100,50 75.1,56.7 93.3,75 68.4,68.4 75,93.3 56.7,75.1 50,100 43.3,75.1 25,93.3 31.6,68.4 6.7,75 24.9,56.7 0,50 24.9,43.3 6.7,25 31.6,31.6 25,6.7 43.3,24.9"/></symbol>
+    <filter id="felt" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="4" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" result="d"/>
+      <feColorMatrix in="n" type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.22 0" result="fuzz"/>
+      <feComposite in="fuzz" in2="d" operator="in" result="fz"/>
+      <feMerge><feMergeNode in="d"/><feMergeNode in="fz"/></feMerge>
+    </filter>
+  </defs>
+</svg>
 
 <main>
-  <section class="spreads" id="spreads" aria-label="Roles"></section>
 
-  <section class="work" id="work" aria-labelledby="work-title" hidden>
-    <hr class="rule" style="margin: 0 0 40px;">
-    <div class="work__head">
-      <h2 class="label" id="work-title">Press &amp; Placements</h2>
-      <span class="label" id="work-count"></span>
+  <!-- 1. Hero -->
+  <header class="hero wrap">
+    <div class="hero__name-wrap" id="hero-name">
+      <h1 class="display hero__name" aria-label="Ash Schnoor"><span>Ash</span><span>Schnoor</span></h1>
+      <svg class="scribble" viewBox="0 0 640 60" preserveAspectRatio="none" aria-hidden="true">
+        <path pathLength="1" d="M8 34C94 16 214 10 330 18S530 34 632 14"/>
+        <path pathLength="1" d="M60 48C190 32 360 30 520 40"/>
+      </svg>
     </div>
-    <div class="work__grid" id="work-grid"></div>
+
+    <div class="hero__meta">
+      <div>
+        <p class="hero__lede">social media and content, mostly for music.</p>
+        <a class="chip" href="mailto:hey@ashie.pics">
+          <span class="chip__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5"/></svg></span>
+          hey@ashie.pics
+        </a>
+      </div>
+      <a class="scroll-cue" href="#hello">
+        <svg class="scroll-cue__badge" viewBox="0 0 100 100" aria-hidden="true">
+          <path fill="#E954AF" d="M50 8A7.66 7.66 0 0 1 64.36 10.53A7.66 7.66 0 0 1 77 17.83A7.66 7.66 0 0 1 86.37 29A7.66 7.66 0 0 1 91.36 42.71A7.66 7.66 0 0 1 91.36 57.29A7.66 7.66 0 0 1 86.37 71A7.66 7.66 0 0 1 77 82.17A7.66 7.66 0 0 1 64.36 89.47A7.66 7.66 0 0 1 50 92A7.66 7.66 0 0 1 35.64 89.47A7.66 7.66 0 0 1 23 82.17A7.66 7.66 0 0 1 13.63 71A7.66 7.66 0 0 1 8.64 57.29A7.66 7.66 0 0 1 8.64 42.71A7.66 7.66 0 0 1 13.63 29A7.66 7.66 0 0 1 23 17.83A7.66 7.66 0 0 1 35.64 10.53A7.66 7.66 0 0 1 50 8Z"/>
+          <path d="M50 30v38M36 55l14 14 14-14" fill="none" stroke="#0F0B10" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="scroll-cue__text">scroll to see what i keep busy online.</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- 2. Marquee -->
+  <div class="marquee" aria-label="Content, PR, tour marketing, web, social media strategy, digital marketing">
+    <div class="marquee__track" data-marquee>
+      <div class="marquee__run">
+        <span>Content</span><svg aria-hidden="true"><use href="#starburst"/></svg>
+        <span>PR</span><svg aria-hidden="true"><use href="#starburst"/></svg>
+        <span>Tour marketing</span><svg aria-hidden="true"><use href="#starburst"/></svg>
+        <span>Web</span><svg aria-hidden="true"><use href="#starburst"/></svg>
+        <span>Social media strategy</span><svg aria-hidden="true"><use href="#starburst"/></svg>
+        <span>Digital marketing</span><svg aria-hidden="true"><use href="#starburst"/></svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Hello -->
+  <section class="hello wrap hello--solo" id="hello" aria-labelledby="hello-title">
+    <figure class="hello__photo" id="hello-photo" hidden></figure>
+    <div class="hello__body">
+      <h2 class="display hello__title" id="hello-title">
+        Hello, I'm
+        <span class="hello__script"><svg class="sparkle" aria-hidden="true"><use href="#sparkle"/></svg>Ash Schnoor</span>
+      </h2>
+      <div class="title-rule" aria-hidden="true"><svg class="sparkle"><use href="#sparkle"/></svg></div>
+      <div class="scallop hello__panel">
+        <p>i'm a junior at Montclair State studying Social Media &amp; PR and Film &amp; Television. most of my week goes to running social for a college radio station, plus interning on the label and publicity sides of the music business. somewhere in there i sleep.</p>
+      </div>
+    </div>
   </section>
 
-  <section class="close reveal" aria-label="Contact">
-    <span class="label close__label">Press inquiries &amp; get in touch</span>
-    <span class="label close__corner">Open to PR &amp; social roles</span>
-    <a class="close__email" href="mailto:hey@ashie.pics">hey@ashie.pics</a>
-    <ul class="close__socials label" id="socials"></ul>
+  <!-- 4. What I do -->
+  <section class="what wrap" aria-labelledby="what-title">
+    <div class="what__head">
+      <h2 class="display what__title" id="what-title">what do i actually do?</h2>
+      <div class="title-rule" aria-hidden="true"><svg class="sparkle"><use href="#sparkle"/></svg></div>
+      <p class="what__body">i work out what a feed should look like, make the content that goes in it, and keep the posting schedule and the website from falling apart.</p>
+    </div>
+    <ul class="skills">
+      <li>social media strategy</li>
+      <li>content creation</li>
+      <li>web management</li>
+      <li>press outreach</li>
+      <li>tour marketing</li>
+      <li>digital marketing</li>
+    </ul>
   </section>
+
+  <!-- 5. Marquee, one word -->
+  <div class="marquee marquee--reverse" aria-hidden="true" style="--speed: 30s">
+    <div class="marquee__track" data-marquee>
+      <div class="marquee__run">
+        <span>Posting, planning, pitching, repeat</span><svg><use href="#starburst"/></svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. Where I've worked -->
+  <section class="worked" aria-labelledby="worked-title">
+    <div class="wrap">
+      <h2 class="display worked__title" id="worked-title">where i've worked</h2>
+      <div class="title-rule" aria-hidden="true"><svg class="sparkle"><use href="#sparkle"/></svg></div>
+      <ul class="worked__list" id="worked-list"></ul>
+    </div>
+  </section>
+
+  <!-- 7. Case studies -->
+  <section class="work wrap" aria-labelledby="work-title">
+    <h2 class="display work__title" id="work-title">the work</h2>
+    <div class="title-rule" aria-hidden="true"><svg class="sparkle"><use href="#sparkle"/></svg></div>
+    <div id="cases"></div>
+  </section>
+
+  <!-- 8. Closing -->
+  <footer class="closing">
+    <div class="wrap">
+      <h2 class="display closing__title">Let's work together</h2>
+      <p class="script closing__script"><svg class="sparkle" aria-hidden="true"><use href="#sparkle"/></svg>say hi</p>
+      <div><a class="closing__email" href="mailto:hey@ashie.pics">hey@ashie.pics</a></div>
+      <ul class="socials caps" id="socials" hidden></ul>
+    </div>
+  </footer>
+
 </main>
 
-<footer>
-  <span class="label">Ash Schnoor</span>
-  <span class="label" id="year"></span>
-</footer>
-
 <script>
-  /* ---- Content. Edit here. ---- */
+  document.documentElement.classList.add("js");
 
-  // Hero photo: set to an image path (e.g. "images/hero.jpg") once there is one.
-  const HERO_PHOTO = null;
+  /* ------------------------------------------------------------------
+     Assets. Anything left empty stays off the page, per the spec:
+     no placeholders. Drop files into images/ and fill in paths.
+     ------------------------------------------------------------------ */
 
-  // Role spreads. `img` stays null until a real photo exists; a flat color block stands in.
+  // Transparent PNG, background removed. Overlaps the end of the hero name.
+  const PORTRAIT = "";
+  // Second cut-out for the Hello section (can be the same file).
+  const HELLO_PHOTO = "";
+  // The sticker or drawing that rests on the hero name. Transparent PNG or SVG.
+  const HERO_STICKER = "";
+
+  // Shape: { label: "Instagram", href: "https://instagram.com/..." }
+  const SOCIALS = [
+    { label: "Instagram", href: "https://www.instagram.com/underscoreashie" },
+    { label: "TikTok", href: "https://www.tiktok.com/@underscoreashie" },
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/ashie" }
+  ];
+
   const ROLES = [
     {
-      org: "Big Picture Media",
-      role: "Publicity Intern",
-      caption: "getting artists' stories in front of the people who cover them.",
-      img: null,
+      org: "WMSC 90.3FM",
+      role: "social and web director",
+      line: "the sound of the station, translated for a feed.",
+      logo: "",
+      // Phone-mockup screens: [{ img: "images/wmsc/feed-1.jpg", alt: "..." }]
+      feed: [],
+      feedNote: "",
+      // Labeled grids: [{ label: "Show recaps", posts: [{ img: "...", alt: "...", href: "..." }] }]
+      groups: []
     },
     {
       org: "Better Noise Music",
-      role: "Tour Marketing Intern",
-      caption: "content that has to move as fast as the tour does.",
-      img: null,
+      role: "digital marketing intern",
+      line: "making a label's releases look as good online as they sound.",
+      logo: "",
+      feed: [],
+      feedNote: "",
+      groups: []
     },
     {
-      org: "WMSC 90.3FM",
-      role: "Social & Web Director",
-      caption: "the sound of the station, translated for a feed.",
-      img: null,
+      org: "Big Picture Media",
+      role: "PR intern",
+      line: "getting artists' stories in front of the people who cover them.",
+      logo: "",
+      feed: [],
+      feedNote: "",
+      groups: []
     },
+    {
+      org: "Live Nation Philadelphia",
+      sub: "The Fillmore",
+      role: "guest services",
+      line: "front of house, where the show starts before the band does.",
+      logo: "",
+      feed: [],
+      feedNote: "",
+      groups: []
+    }
   ];
 
-  // Press & Placements: coverage secured, press releases, campaigns. Section stays hidden while empty.
-  // Shape: { img: "images/press/x.jpg", title: "Outlet — headline", href: "https://..." }
-  const WORK = [];
-
-  // Socials. List stays empty until real handles are added.
-  // Shape: { name: "Instagram", href: "https://instagram.com/..." }
-  const SOCIALS = [];
-
-  /* ---- Render ---- */
+  /* ------------------------------------------------------------------ */
 
   const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const use = (id, cls = "") => `<svg class="${cls}" aria-hidden="true"><use href="#${id}"/></svg>`;
 
-  if (HERO_PHOTO) {
-    document.getElementById("hero-photo").innerHTML = `<img src="${esc(HERO_PHOTO)}" alt="">`;
+  if (PORTRAIT) {
+    document.getElementById("hero-name").insertAdjacentHTML("beforeend",
+      `<img class="hero__portrait" src="${esc(PORTRAIT)}" alt="Ash Schnoor">`);
+  }
+  if (HERO_STICKER) {
+    document.getElementById("hero-name").insertAdjacentHTML("beforeend",
+      `<img class="hero__sticker" src="${esc(HERO_STICKER)}" alt="">`);
+  }
+  if (HELLO_PHOTO) {
+    const fig = document.getElementById("hello-photo");
+    fig.innerHTML = `<img src="${esc(HELLO_PHOTO)}" alt="Ash Schnoor">`;
+    fig.hidden = false;
+    fig.parentElement.classList.remove("hello--solo");
   }
 
-  document.getElementById("spreads").innerHTML = ROLES.map((r, i) => `
-    <article class="spread reveal${i % 2 ? " spread--flip" : ""}">
-      <div class="spread__media${r.img ? "" : " spread__media--empty"}">
-        ${r.img ? `<img src="${esc(r.img)}" alt="${esc(r.org)}" loading="lazy">` : `<span class="label">${esc(r.org)}</span>`}
-      </div>
-      <div class="spread__text">
-        <span class="label spread__index">${String(i + 1).padStart(2, "0")} / ${String(ROLES.length).padStart(2, "0")}</span>
-        <h2 class="spread__title">${esc(r.org)}</h2>
-        <p class="label spread__role">${esc(r.role)}</p>
-        <p class="spread__caption">${esc(r.caption)}</p>
-      </div>
-    </article>`).join("");
+  document.getElementById("worked-list").innerHTML = ROLES.map((r) => `
+    <li class="worked__item">
+      <span class="wordmark">${r.logo ? `<img src="${esc(r.logo)}" alt="${esc(r.org)}">` : esc(r.org)}${r.sub ? `<small>${esc(r.sub)}</small>` : ""}</span>
+      <span class="caps worked__role">${esc(r.role)}</span>
+    </li>`).join("");
 
-  if (WORK.length) {
-    document.getElementById("work").hidden = false;
-    document.getElementById("work-count").textContent = `${WORK.length} pieces`;
-    document.getElementById("work-grid").innerHTML = WORK.map((w) => `
-      <div class="work__item reveal">
-        <a href="${esc(w.href || w.img)}" target="_blank" rel="noopener">
-          <figure>
-            <div class="work__frame">
-              <img src="${esc(w.img)}" alt="${esc(w.title)}" loading="lazy">
-              <span class="label">View</span>
-            </div>
-            <figcaption class="label">${esc(w.title)}</figcaption>
-          </figure>
-        </a>
+  const feltStar = `
+    <svg class="felt-star" viewBox="0 0 100 100" aria-hidden="true">
+      <path filter="url(#felt)" fill="#E954AF" stroke="#0F0B10" stroke-width="2.5" stroke-dasharray="4 4" stroke-linejoin="round"
+        d="M50 6 62 36 94 38 69 58 78 90 50 72 22 90 31 58 6 38 38 36Z"/>
+    </svg>`;
+
+  document.getElementById("cases").innerHTML = ROLES.map((r) => {
+    const feed = r.feed.length ? `
+      <div class="feed">
+        <div class="phone-slot reveal">
+          <div class="phone"><div class="phone__screen">
+            <img src="${esc(r.feed[0].img)}" alt="${esc(r.feed[0].alt || r.org + " feed")}" loading="lazy">
+          </div></div>
+          ${feltStar}
+        </div>
+        <div class="scallop feed__panel reveal">
+          <h4 class="display">${esc(r.org)}</h4>
+          ${r.feedNote ? `<p>${esc(r.feedNote)}</p>` : ""}
+        </div>
+      </div>` : "";
+
+    const groups = r.groups.filter((g) => g.posts && g.posts.length).map((g) => `
+      <div class="group">
+        <p class="caps group__label">${use("starburst")}${esc(g.label)}</p>
+        <div class="grid">
+          ${g.posts.map((p) => `<a href="${esc(p.href || p.img)}" target="_blank" rel="noopener"><img src="${esc(p.img)}" alt="${esc(p.alt || "")}" loading="lazy"></a>`).join("")}
+        </div>
       </div>`).join("");
-  }
 
-  const socials = document.getElementById("socials");
+    return `
+      <article class="case">
+        <div class="case__head">
+          <h3 class="display case__name">${esc(r.org)}${r.sub ? `<span class="case__sub">${esc(r.sub)}</span>` : ""}</h3>
+          <p class="caps case__role">${esc(r.role)}</p>
+          <p class="case__line">${esc(r.line)}</p>
+        </div>
+        ${feed}${groups}
+      </article>`;
+  }).join("");
+
   if (SOCIALS.length) {
-    socials.innerHTML = SOCIALS.map((s) => `<li><a href="${esc(s.href)}" target="_blank" rel="noopener">${esc(s.name)}</a></li>`).join("");
-  } else {
-    socials.remove();
+    const ul = document.getElementById("socials");
+    ul.innerHTML = SOCIALS.map((s) => `<li><a href="${esc(s.href)}" target="_blank" rel="noopener">${esc(s.label)}</a></li>`).join("");
+    ul.hidden = false;
   }
 
-  document.getElementById("year").textContent = new Date().getFullYear();
+  // Marquee: repeat the run until it overfills two screens, then loop at -50%.
+  document.querySelectorAll("[data-marquee]").forEach((track) => {
+    const run = track.firstElementChild;
+    const need = Math.ceil((window.innerWidth * 1.2) / run.offsetWidth);
+    for (let i = 1; i < need; i++) run.parentNode.appendChild(run.cloneNode(true));
+    const half = Array.from(track.children);
+    half.forEach((n) => { const c = n.cloneNode(true); c.setAttribute("aria-hidden", "true"); track.appendChild(c); });
+  });
 
-  /* ---- Motion ---- */
-
-  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  // Phone mockups and their panels slide in once.
   const reveals = document.querySelectorAll(".reveal");
-
-  if (reduced || !("IntersectionObserver" in window)) {
-    reveals.forEach((el) => el.classList.add("is-in"));
-  } else {
-    // Single pass: unobserve once shown
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((e) => {
-        if (e.isIntersecting) {
-          e.target.classList.add("is-in");
-          io.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.15 });
+  if (reveals.length && "IntersectionObserver" in window) {
+    const io = new IntersectionObserver((entries) => entries.forEach((e) => {
+      if (e.isIntersecting) { e.target.classList.add("is-in"); io.unobserve(e.target); }
+    }), { rootMargin: "0px 0px -12% 0px" });
     reveals.forEach((el) => io.observe(el));
-
-    // Subtle wordmark parallax, capped at a few pixels
-    const mark = document.getElementById("wordmark");
-    let ticking = false;
-    window.addEventListener("scroll", () => {
-      if (ticking) return;
-      ticking = true;
-      requestAnimationFrame(() => {
-        const y = Math.min(window.scrollY, window.innerHeight);
-        mark.style.transform = `translateY(${(y * 0.04).toFixed(1)}px)`;
-        ticking = false;
-      });
-    }, { passive: true });
+  } else {
+    reveals.forEach((el) => el.classList.add("is-in"));
   }
 </script>
 </body>

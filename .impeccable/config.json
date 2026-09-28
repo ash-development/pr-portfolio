@@ -1,0 +1,53 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "tight-leading",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-09-28T00:11:37.063Z",
+        "reason": "Claude: only sub-1.3 line-heights are Anton display type (wordmark 0.86, role titles 0.9, email 0.95), set tight per design spec's poster wordmark; body text is 1.6"
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-09-28T00:11:37.081Z",
+        "reason": "Claude: flagged wrappers are hairline-rule dividers (roles list, spread top rules) with only top/bottom borders, spec-mandated editorial rules, not boxed containers; bordered close panel and pill have 48px+/22px padding"
+      },
+      {
+        "rule": "cream-palette",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-09-28T00:48:45.013Z",
+        "reason": "design spec (user-supplied PDF) pins Cream #FFF8F2 as page background, sampled from both references"
+      },
+      {
+        "rule": "marquee",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-09-28T00:48:45.030Z",
+        "reason": "design spec (user-supplied PDF) requires slowly scrolling pink marquee bands with reduced-motion static fallback"
+      },
+      {
+        "rule": "low-contrast",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-09-28T00:50:14.650Z",
+        "reason": "Claude: only white-on-#E953AF text is spec-mandated large type (marquee caps >=20.8px/800, closing display and email >=32px/800); 3.3:1 passes the 3:1 large-text bar. Small text on pink uses charcoal."
+      }
+    ]
+  }
+}

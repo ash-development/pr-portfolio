@@ -1,2 +1,4 @@
 .memsearch/
 .DS_Store
+.impeccable/hook.cache.json
+.impeccable/review/
