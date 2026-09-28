@@ -605,6 +605,7 @@
   const ROLES = [
     {
       org: "WMSC 90.3FM",
+      caseName: "WMSC Upper Montclair",
       role: "social and web director",
       line: "the sound of the station, translated for a feed.",
       logo: "images/wmsc.png",
@@ -703,7 +704,7 @@
     return `
       <article class="case">
         <div class="case__head">
-          <h3 class="display case__name">${esc(r.org)}${r.sub ? `<span class="case__sub">${esc(r.sub)}</span>` : ""}</h3>
+          <h3 class="display case__name">${esc(r.caseName || r.org)}${r.sub ? `<span class="case__sub">${esc(r.sub)}</span>` : ""}</h3>
           <p class="caps case__role">${esc(r.role)}</p>
           <p class="case__line">${esc(r.line)}</p>
         </div>
