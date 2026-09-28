@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Ash Schnoor — Portfolio</title>
-<meta name="description" content="Ash Schnoor — content creator and social strategist. WMSC 90.3FM, Better Noise Music, Big Picture Media.">
+<meta name="description" content="Ash Schnoor — music publicist and social strategist. Big Picture Media, Better Noise Music, WMSC 90.3FM.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Alex+Brush&family=Work+Sans:wght@400;500&display=swap" rel="stylesheet">
@@ -179,6 +179,8 @@
     color: var(--cocoa);
   }
   .intro__roles li span:last-child { opacity: 0.7; text-align: right; }
+  /* Writing credits: the other side of the pitch */
+  .intro__press { margin-top: 28px; border-top: 1px solid rgba(139, 90, 43, 0.35); }
 
   /* ---------- Role spreads ---------- */
   .spreads {
@@ -375,19 +377,21 @@
   </div>
 
   <div class="hero__bottom">
-    <span class="pill">content creator + social strategist</span>
+    <span class="pill">music publicist + social strategist</span>
   </div>
 </header>
 
 <section class="intro reveal" aria-label="About">
   <div class="intro__bio">
     <span class="label">About</span>
-    <p>i run the feeds and the strategy behind them. three roles, one way of showing up.</p>
+    <p>i get artists' stories in front of the people who cover them, then keep the story moving on every feed after.</p>
   </div>
   <ul class="intro__roles label" aria-label="Current roles">
-    <li><span>WMSC 90.3FM</span><span>Social &amp; Web Director</span></li>
+    <li><span>Big Picture Media</span><span>Publicity</span></li>
     <li><span>Better Noise Music</span><span>Tour Marketing</span></li>
-    <li><span>Big Picture Media</span><span>PR</span></li>
+    <li><span>WMSC 90.3FM</span><span>Social &amp; Web Director</span></li>
+    <li class="intro__press"><span>Melodic Magazine</span><span>Contributing Writer</span></li>
+    <li><span>Crossfade Magazine</span><span>Writer</span></li>
   </ul>
 </section>
 
@@ -397,15 +401,15 @@
   <section class="work" id="work" aria-labelledby="work-title" hidden>
     <hr class="rule" style="margin: 0 0 40px;">
     <div class="work__head">
-      <h2 class="label" id="work-title">The Work</h2>
+      <h2 class="label" id="work-title">Press &amp; Placements</h2>
       <span class="label" id="work-count"></span>
     </div>
     <div class="work__grid" id="work-grid"></div>
   </section>
 
   <section class="close reveal" aria-label="Contact">
-    <span class="label close__label">Get in touch</span>
-    <span class="label close__corner">Open to content &amp; social roles</span>
+    <span class="label close__label">Press inquiries &amp; get in touch</span>
+    <span class="label close__corner">Open to PR &amp; social roles</span>
     <a class="close__email" href="mailto:hey@ashie.pics">hey@ashie.pics</a>
     <ul class="close__socials label" id="socials"></ul>
   </section>
@@ -425,9 +429,9 @@
   // Role spreads. `img` stays null until a real photo exists; a flat color block stands in.
   const ROLES = [
     {
-      org: "WMSC 90.3FM",
-      role: "Social & Web Director",
-      caption: "the sound of the station, translated for a feed.",
+      org: "Big Picture Media",
+      role: "Publicity Intern",
+      caption: "getting artists' stories in front of the people who cover them.",
       img: null,
     },
     {
@@ -437,15 +441,15 @@
       img: null,
     },
     {
-      org: "Big Picture Media",
-      role: "PR Intern",
-      caption: "getting artists' stories in front of the people who cover them.",
+      org: "WMSC 90.3FM",
+      role: "Social & Web Director",
+      caption: "the sound of the station, translated for a feed.",
       img: null,
     },
   ];
 
-  // The Work gallery. Section stays hidden while empty.
-  // Shape: { img: "images/work/x.jpg", title: "WMSC show recap reel", href: "https://..." }
+  // Press & Placements: coverage secured, press releases, campaigns. Section stays hidden while empty.
+  // Shape: { img: "images/press/x.jpg", title: "Outlet — headline", href: "https://..." }
   const WORK = [];
 
   // Socials. List stays empty until real handles are added.
