@@ -325,6 +325,9 @@
   .wordmark { display: flex; align-items: center; justify-content: center; height: clamp(5rem, 9vw, 7.5rem); width: 100%; }
   .wordmark img { max-height: 100%; max-width: 100%; width: auto; height: auto; object-fit: contain; }
   .wordmark--wide img { max-height: 62%; }
+  a.wordmark { text-decoration: none; color: inherit; }
+  a.wordmark img { transition: transform 0.35s var(--ease-out); }
+  a.wordmark:hover img { transform: scale(1.05); }
   .worked__role { color: var(--pink); }
   .worked__sub { display: block; color: var(--soft); margin-bottom: 0.3rem; }
 
@@ -349,11 +352,13 @@
 
   .feed {
     display: grid;
-    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
-    gap: clamp(2rem, 5vw, 5rem);
-    align-items: center;
+    grid-template-columns: minmax(0, 20rem) minmax(0, 1fr);
+    gap: clamp(2rem, 5vw, 4.5rem);
+    align-items: end;
     margin-top: clamp(2.5rem, 5vw, 4rem);
   }
+  .feed__groups .group:first-child { margin-top: 0; }
+  .case:nth-of-type(even) .feed { grid-template-columns: minmax(0, 1fr) minmax(0, 20rem); }
   .case:nth-of-type(even) .feed .phone-slot { order: 2; }
 
   .phone-slot { position: relative; justify-self: center; width: min(100%, 20rem); }
@@ -386,8 +391,6 @@
     filter: drop-shadow(0 0.25rem 0.35rem rgb(16 16 16 / 0.22));
   }
   .phone-slot:hover .felt-star { transform: rotate(4deg) scale(1.03); }
-  .feed__panel h4 { font-size: clamp(1.8rem, 3.6vw, 2.8rem); color: var(--on-pink); }
-  .feed__panel p { margin: 1rem 0 0; font-size: 1.125rem; max-width: 36ch; }
 
   .group { margin-top: clamp(3rem, 6vw, 4.5rem); }
   .group__label { display: flex; align-items: center; gap: 0.6rem; color: var(--pink); margin: 0 0 1.25rem; }
@@ -451,6 +454,23 @@
   }
   .socials a:hover { background: var(--cream); color: var(--on-pink); }
 
+  /* Floating contact button: shows between the hero and the closing screen */
+  .contact-fab {
+    position: fixed; left: clamp(1rem, 2.5vw, 1.75rem); bottom: clamp(1rem, 2.5vw, 1.75rem); z-index: 20;
+    display: inline-flex; align-items: center; gap: 0.55rem;
+    padding: 0.8rem 1.2rem 0.8rem 1rem;
+    border-radius: 999px;
+    background: var(--pink); color: var(--on-pink);
+    font: 800 1rem/1 var(--display); letter-spacing: -0.01em;
+    text-decoration: none;
+    box-shadow: 0 0.6rem 1.4rem -0.4rem rgb(0 0 0 / 0.7);
+    transition: opacity 0.35s var(--ease-out), transform 0.45s var(--ease-out), visibility 0.35s;
+  }
+  .contact-fab svg { width: 1.15rem; height: 1.15rem; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+  .contact-fab:hover { transform: translateY(-2px); }
+  .contact-fab:focus-visible { outline-color: var(--pink); }
+  .js .contact-fab:not(.is-shown) { opacity: 0; visibility: hidden; transform: translateY(1rem); }
+
   /* Responsive -------------------------------------------------------- */
 
   @media (max-width: 760px) {
@@ -459,7 +479,7 @@
     .hello__photo { order: 2; width: 80%; }
     .hello__panel { margin-left: 0; }
     .hello--solo .hello__body, .hello__body { padding-bottom: 3.5rem; }
-    .feed { grid-template-columns: 1fr; }
+    .feed, .case:nth-of-type(even) .feed { grid-template-columns: 1fr; }
     .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .case:nth-of-type(even) .feed .phone-slot { order: 0; }
     .skills li:nth-child(n) { margin-left: 0; }
@@ -473,7 +493,7 @@
     .js .marquee__track { animation: none; }
     .js .scribble path { animation: none; stroke-dashoffset: 0; }
     .js .reveal { opacity: 1; transform: none; transition: none; }
-    .felt-star, .scroll-cue__badge { transition: none; }
+    .felt-star, .scroll-cue__badge, .contact-fab { transition: none; }
   }
 </style>
 </head>
@@ -595,7 +615,7 @@
   </section>
 
   <!-- 8. Closing -->
-  <footer class="closing">
+  <footer class="closing" id="contact">
     <div class="wrap">
       <h2 class="display closing__title">Let's work together</h2>
       <p class="script closing__script"><svg class="sparkle" aria-hidden="true"><use href="#sparkle"/></svg>say hi</p>
@@ -605,6 +625,11 @@
   </footer>
 
 </main>
+
+<a class="contact-fab" href="#contact" data-fab>
+  <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5"/></svg>
+  contact
+</a>
 
 <script>
   document.documentElement.classList.add("js");
@@ -631,6 +656,7 @@
   const ROLES = [
     {
       org: "WMSC 90.3FM",
+      site: "https://wmscradio.com",
       caseName: "WMSC Upper Montclair",
       role: "social and web director",
       line: "the sound of the station, translated for a feed.",
@@ -640,7 +666,6 @@
       statsLink: "https://gondola.cc/underscoreashie",
       // Phone-mockup screens: [{ img, alt, href, views }]
       feed: [{ img: "images/wmsc/a535429c80.jpg", alt: "Stray Kids bid adieu to Gov Ball day 2", href: "https://gondola.cc/posts/66791256-wmscradio-instagram", views: "49k" }],
-      feedNote: "festival and show coverage for the station's instagram. the top one did 49k views.",
       // Labeled grids: [{ label, posts: [{ img, alt, href, views }] }]
       groups: [{ label: "top reels", posts: [
         { img: "images/wmsc/a714c5cb21.jpg", alt: "Breaking: Gov Ball sets temporarily suspended for lightning", href: "https://gondola.cc/posts/66910290-wmscradio-instagram", views: "22k" },
@@ -655,31 +680,31 @@
     },
     {
       org: "Better Noise Music",
+      site: "https://betternoise.com/",
       role: "digital marketing intern",
       line: "making a label's releases look as good online as they sound.",
       logo: "images/better-noise.png",
       feed: [],
-      feedNote: "",
       groups: []
     },
     {
       org: "Big Picture Media",
+      site: "https://bpmpublicity.com",
       role: "PR intern",
       line: "getting artists' stories in front of the people who cover them.",
       logo: "images/big-picture.png",
       feed: [],
-      feedNote: "",
       groups: []
     },
     {
       org: "Live Nation Philadelphia",
+      site: "https://www.thefillmorephilly.com/",
       sub: "The Fillmore",
       role: "guest services",
       line: "front of house, where the show starts before the band does.",
       logo: "images/live-nation.png",
       logoWide: true,
       feed: [],
-      feedNote: "",
       groups: []
     }
   ];
@@ -706,7 +731,7 @@
 
   document.getElementById("worked-list").innerHTML = ROLES.map((r) => `
     <li class="worked__item">
-      <span class="wordmark${r.logoWide ? " wordmark--wide" : ""}">${r.logo ? `<img src="${esc(r.logo)}" alt="${esc(r.org)}">` : esc(r.org)}</span>
+      <a class="wordmark${r.logoWide ? " wordmark--wide" : ""}" href="${esc(r.site)}" target="_blank" rel="noopener">${r.logo ? `<img src="${esc(r.logo)}" alt="${esc(r.org)}">` : esc(r.org)}</a>
       <span class="caps worked__role">${r.sub ? `<span class="worked__sub">${esc(r.sub)}</span>` : ""}${esc(r.role)}</span>
     </li>`).join("");
 
@@ -717,20 +742,6 @@
     </svg>`;
 
   document.getElementById("cases").innerHTML = ROLES.map((r) => {
-    const feed = r.feed.length ? `
-      <div class="feed">
-        <div class="phone-slot reveal">
-          <div class="phone"><div class="phone__screen">
-            <a href="${esc(r.feed[0].href || r.feed[0].img)}" target="_blank" rel="noopener"><img src="${esc(r.feed[0].img)}" alt="${esc(r.feed[0].alt || r.org + " feed")}" loading="lazy"></a>
-          </div></div>
-          ${feltStar}
-        </div>
-        <div class="scallop feed__panel reveal">
-          <h4 class="display">${esc(r.org)}</h4>
-          ${r.feedNote ? `<p>${esc(r.feedNote)}</p>` : ""}
-        </div>
-      </div>` : "";
-
     const groups = r.groups.filter((g) => g.posts && g.posts.length).map((g) => `
       <div class="group">
         <p class="caps group__label">${use("starburst")}${esc(g.label)}</p>
@@ -738,6 +749,16 @@
           ${g.posts.map((p) => `<a href="${esc(p.href || p.img)}" target="_blank" rel="noopener"><img src="${esc(p.img)}" alt="${esc(p.alt || "")}" loading="lazy">${p.views ? `<span class="caps grid__views">${esc(p.views)} views</span>` : ""}</a>`).join("")}
         </div>
       </div>`).join("");
+
+    const phone = r.feed.length ? `
+        <div class="phone-slot reveal">
+          <div class="phone"><div class="phone__screen">
+            <a href="${esc(r.feed[0].href || r.feed[0].img)}" target="_blank" rel="noopener"><img src="${esc(r.feed[0].img)}" alt="${esc(r.feed[0].alt || r.org + " feed")}" loading="lazy"></a>
+          </div></div>
+          ${feltStar}
+        </div>` : "";
+
+    const work = phone ? `<div class="feed">${phone}<div class="feed__groups">${groups}</div></div>` : groups;
 
     return `
       <article class="case">
@@ -747,7 +768,7 @@
           <p class="case__line">${esc(r.line)}</p>
           ${r.stats ? `<p class="case__stats">${r.stats.map(([n, l]) => `<span><b>${esc(n)}</b> ${esc(l)}</span>`).join("")}${r.statsLink ? `<a class="caps" href="${esc(r.statsLink)}" target="_blank" rel="noopener">all posts on gondola</a>` : ""}</p>` : ""}
         </div>
-        ${feed}${groups}
+        ${work}
       </article>`;
   }).join("");
 
@@ -766,7 +787,22 @@
     half.forEach((n) => { const c = n.cloneNode(true); c.setAttribute("aria-hidden", "true"); track.appendChild(c); });
   });
 
-  // Phone mockups and their panels slide in once.
+  // Contact button: visible once the hero is gone, hidden again at the closing screen.
+  const fab = document.querySelector("[data-fab]");
+  if ("IntersectionObserver" in window) {
+    const seen = new Map();
+    const hero = document.querySelector(".hero"), closing = document.querySelector(".closing");
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => seen.set(e.target, e.isIntersecting));
+      fab.classList.toggle("is-shown", !seen.get(hero) && !seen.get(closing));
+    });
+    io.observe(hero);
+    io.observe(closing);
+  } else {
+    fab.classList.add("is-shown");
+  }
+
+  // Phone mockups slide in once.
   const reveals = document.querySelectorAll(".reveal");
   if (reveals.length && "IntersectionObserver" in window) {
     const io = new IntersectionObserver((entries) => entries.forEach((e) => {
