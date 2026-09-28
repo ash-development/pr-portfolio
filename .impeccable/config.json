@@ -47,6 +47,15 @@
         ],
         "createdAt": "2026-09-28T00:50:14.650Z",
         "reason": "Claude: only white-on-#E953AF text is spec-mandated large type (marquee caps >=20.8px/800, closing display and email >=32px/800); 3.3:1 passes the 3:1 large-text bar. Small text on pink uses charcoal."
+      },
+      {
+        "rule": "all-caps-body",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-09-28T01:47:51.856Z",
+        "reason": "Claude: flagged run is the 35-char marquee phrase POSTING, PLANNING, PITCHING, REPEAT; spec mandates caps marquee bands, user chose a phrase"
       }
     ]
   }
