@@ -17,7 +17,7 @@ A one-link personal portfolio that lands content creator and social media manage
 She is running social and web for a college radio station while interning on both the label side (digital marketing) and the publicity side of the music business at the same time. The page proves that with the actual feeds and posts, not adjectives.
 
 ## Operating Context
-- WMSC 90.3FM: social and web director.
+- WMSC 90.3FM: assistant music director & web director.
 - Better Noise Music: digital marketing intern.
 - Big Picture Media: PR intern.
 - Live Nation Philadelphia / The Fillmore: guest services.
