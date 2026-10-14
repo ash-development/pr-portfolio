@@ -217,6 +217,56 @@
   .scroll-cue:hover .scroll-cue__badge { transform: rotate(20deg); }
   .scroll-cue__text { font-size: 1rem; line-height: 1.35; color: var(--soft); }
 
+  .hero__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem 1rem; }
+  .icon-links { display: flex; gap: 0.5rem; list-style: none; margin: 0; padding: 0; }
+  .icon-links a {
+    display: grid; place-items: center;
+    width: 2.5rem; height: 2.5rem; border-radius: 50%;
+    background: var(--surface); color: var(--cream);
+    outline: 1px solid rgb(246 238 233 / 0.14); outline-offset: -1px;
+    transition: background-color 0.2s, color 0.2s, transform 0.3s var(--ease-out);
+  }
+  .icon-links a:hover { background: var(--pink); color: var(--on-pink); transform: translateY(-2px); }
+  .icon-links svg { width: 1.15rem; height: 1.15rem; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .resume-btn {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.65rem 1.1rem 0.65rem 0.9rem;
+    border: 2px solid var(--pink); border-radius: 999px;
+    background: transparent; color: var(--cream);
+    font: 700 1rem/1 var(--body);
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+  }
+  .resume-btn:hover { background: var(--pink); color: var(--on-pink); }
+  .resume-btn svg { width: 1.1rem; height: 1.1rem; fill: none; stroke: currentColor; stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+
+  /* Resume lightbox */
+  .resume {
+    width: min(100% - 2rem, 56rem); height: min(100% - 2rem, 62rem);
+    max-width: none; max-height: none;
+    padding: 0; border: 0; border-radius: 1rem;
+    background: var(--surface); color: var(--cream);
+    box-shadow: 0 2rem 4rem -1rem rgb(0 0 0 / 0.8);
+    flex-direction: column;
+  }
+  .resume[open] { display: flex; }
+  .resume::backdrop { background: rgb(15 11 16 / 0.82); }
+  .resume__bar { display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem 1rem; padding: 0.9rem 1rem 0.9rem 1.4rem; }
+  .resume__title { margin: 0 auto 0 0; font: 800 1.5rem/1 var(--display); letter-spacing: -0.03em; color: var(--pink); }
+  .resume__action {
+    padding: 0.6rem 1rem; border-radius: 999px;
+    background: var(--pink); color: var(--on-pink);
+    font-weight: 700; text-decoration: none; line-height: 1;
+  }
+  .resume__action--quiet { background: transparent; color: var(--cream); text-decoration: underline; padding-inline: 0.4rem; }
+  .resume__close {
+    display: grid; place-items: center; width: 2.5rem; height: 2.5rem;
+    border: 0; border-radius: 50%; background: var(--bg); color: var(--cream); cursor: pointer;
+  }
+  .resume__close:hover { background: var(--pink); color: var(--on-pink); }
+  .resume__close svg { width: 1.2rem; height: 1.2rem; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; }
+  .resume__frame { flex: 1; width: 100%; border: 0; background: #fff; border-radius: 0 0 1rem 1rem; }
+
   /* Marquee bands ----------------------------------------------------- */
 
   .marquee {
@@ -534,10 +584,17 @@
     <div class="hero__meta">
       <div>
         <p class="hero__lede">social media and content, mostly for music.</p>
-        <a class="chip" href="mailto:hey@ashie.pics">
-          <span class="chip__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5"/></svg></span>
-          hey@ashie.pics
-        </a>
+        <div class="hero__actions">
+          <a class="chip" href="mailto:hey@ashie.pics">
+            <span class="chip__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5"/></svg></span>
+            hey@ashie.pics
+          </a>
+          <ul class="icon-links" id="hero-socials" aria-label="Socials"></ul>
+          <button class="resume-btn" type="button" id="resume-open" hidden>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4M10 12h5M10 16h5"/></svg>
+            my resume
+          </button>
+        </div>
       </div>
       <a class="scroll-cue" href="#hello">
         <svg class="scroll-cue__badge" viewBox="0 0 100 100" aria-hidden="true">
@@ -632,6 +689,18 @@
 
 </main>
 
+<dialog class="resume" id="resume" aria-labelledby="resume-title">
+  <div class="resume__bar">
+    <h2 class="resume__title" id="resume-title">my resume</h2>
+    <a class="resume__action" id="resume-download" download>download pdf</a>
+    <a class="resume__action resume__action--quiet" id="resume-tab" target="_blank" rel="noopener">open in new tab</a>
+    <button class="resume__close" type="button" id="resume-close" aria-label="Close resume" autofocus>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+    </button>
+  </div>
+  <iframe class="resume__frame" id="resume-frame" title="Ash Schnoor resume"></iframe>
+</dialog>
+
 <a class="contact-fab" href="#contact" data-fab>
   <img class="contact-fab__cat" src="images/cat-head.svg" alt="" width="40" height="34">
   <span>say hi!</span>
@@ -651,6 +720,9 @@
   const HELLO_PHOTO = "";
   // The sticker or drawing that rests on the hero name. Transparent PNG or SVG.
   const HERO_STICKER = "images/cat.svg";
+
+  // Resume PDF, shown in a lightbox from the hero. Empty keeps the button hidden.
+  const RESUME = "";
 
   // Shape: { label: "Instagram", href: "https://instagram.com/..." }
   const SOCIALS = [
@@ -777,6 +849,32 @@
         ${work}
       </article>`;
   }).join("");
+
+  const ICONS = {
+    Instagram: '<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="0.6" fill="currentColor"/>',
+    TikTok: '<path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5"/><path d="M14 3c.5 2.7 2.3 4.4 5 4.7"/>',
+    LinkedIn: '<rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10.5V17M8 7.2v.1M12 17v-6.5M12 13.5c0-2 1.2-3 2.7-3s2.3 1 2.3 3V17"/>'
+  };
+  document.getElementById("hero-socials").innerHTML = SOCIALS.map((s) => `
+    <li><a href="${esc(s.href)}" target="_blank" rel="noopener" aria-label="${esc(s.label)}"><svg viewBox="0 0 24 24" aria-hidden="true">${ICONS[s.label] || ""}</svg></a></li>`).join("");
+
+  if (RESUME) {
+    const dlg = document.getElementById("resume");
+    const open = document.getElementById("resume-open");
+    const frame = document.getElementById("resume-frame");
+    document.getElementById("resume-download").href = RESUME;
+    document.getElementById("resume-tab").href = RESUME;
+    open.hidden = false;
+    // Phones render PDFs in iframes badly; send them straight to the file.
+    const small = matchMedia("(max-width: 760px)");
+    open.addEventListener("click", () => {
+      if (small.matches || !dlg.showModal) { window.open(RESUME, "_blank", "noopener"); return; }
+      if (!frame.src) frame.src = RESUME;
+      dlg.showModal();
+    });
+    document.getElementById("resume-close").addEventListener("click", () => dlg.close());
+    dlg.addEventListener("click", (e) => { if (e.target === dlg) dlg.close(); });
+  }
 
   if (SOCIALS.length) {
     const ul = document.getElementById("socials");
