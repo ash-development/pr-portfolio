@@ -21,6 +21,7 @@ She is running social and web for a college radio station while interning on bot
 - Better Noise Music: digital marketing intern.
 - Big Picture Media: PR intern.
 - Live Nation Philadelphia / The Fillmore: guest services.
+- RASPBERRI PR (raspberripr.com): founder & president.
 - Junior at Montclair State, Social Media & PR and Film & Television.
 
 ## Capabilities and Constraints
